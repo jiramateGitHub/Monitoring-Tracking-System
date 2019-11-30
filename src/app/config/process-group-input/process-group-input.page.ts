@@ -8,7 +8,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./process-group-input.page.scss'],
 })
 export class ProcessGroupInputPage implements OnInit {
-  private pcsm_id:string;
+  private pcsm_id;
   private pcsg_id:string;
   private pcsg_code:string;
   private pcsg_th:string;
@@ -31,6 +31,8 @@ export class ProcessGroupInputPage implements OnInit {
   }
 
   process_group_insert(){
+    this.pcsm_id.toString();
+
     let customer = this.pcsm_id.ps_id;
     this.MtsProcessGroupService.process_group_insert(this.pcsg_code,this.pcsg_th,this.pcsg_en,customer).subscribe(result => {
         alert("insert success") ;
