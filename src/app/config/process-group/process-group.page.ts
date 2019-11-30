@@ -26,9 +26,7 @@ export class ProcessGroupPage implements OnInit {
     return await modal.present();
   }
 
-  async closeModal(){
-    await this.modalController.dismiss();
-  }
+  
 
   async presentAlertCheckbox() {
     const alert = await this.alertController.create({

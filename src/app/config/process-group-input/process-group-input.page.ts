@@ -1,3 +1,4 @@
+import { MtsProcessGroupService } from './../../service/mts_process_group/mts-process-group.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
@@ -8,21 +9,18 @@ import { ModalController } from '@ionic/angular';
 })
 export class ProcessGroupInputPage implements OnInit {
 
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private MtsProcessGroupService : MtsProcessGroupService) { }
 
   ngOnInit() {
   }
   pcsg = 0;
-  users = [
-    {
-      id:0,
-      name:"test"
-    }
-  ];
+  pcsm_list;
 
   get_process_manager(){
-    this.customerService.getAllCustomer().subscribe(result => {
-      this.customerList = result;
+    this.MtsProcessGroupService.get_hr_person().subscribe(result => {
+      this.pcsm_list = result;
     });
   }
   async closeModal(){
