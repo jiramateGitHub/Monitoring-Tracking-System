@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpModule } from '@angular/http';
 import { FormsModule } from "@angular/forms";
+import { IonicSelectableModule } from "ionic-selectable";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from "@angular/forms";
     IonicModule.forRoot(),
     AppRoutingModule, 
     FormsModule,
-    HttpModule
+    HttpModule,
+    IonicSelectableModule
   ],
   providers: [
     StatusBar,

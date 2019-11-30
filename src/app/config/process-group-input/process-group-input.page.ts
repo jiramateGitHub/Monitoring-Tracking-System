@@ -12,7 +12,19 @@ export class ProcessGroupInputPage implements OnInit {
 
   ngOnInit() {
   }
+  pcsg = 0;
+  users = [
+    {
+      id:0,
+      name:"test"
+    }
+  ];
 
+  get_process_manager(){
+    this.customerService.getAllCustomer().subscribe(result => {
+      this.customerList = result;
+    });
+  }
   async closeModal(){
     await this.modalController.dismiss();
   }

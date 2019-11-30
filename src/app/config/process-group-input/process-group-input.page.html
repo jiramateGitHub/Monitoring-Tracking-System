@@ -15,7 +15,28 @@
 
 <ion-content padding="true">
     <ion-item>
-      <ion-label position="floating">ชื่อกลุ่มกระบวนการ</ion-label>
-      <ion-input ></ion-input>
+      <ion-label position="floating">รหัส</ion-label>
+      <ion-input [(ngModel)]="pcsg_code"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">ชื่อภาษาไทย</ion-label>
+      <ion-input [(ngModel)]="pcsg_th"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">ชื่อภาษาอังกฤษ</ion-label>
+      <ion-input [(ngModel)]="pcsg_th"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>ผู้ดูแล</ion-label>
+      <ionic-selectable 
+        [(ngModel)]="pcsg" 
+        [items]="users"
+        [canSearch]="true"
+        itemValueField="ยังไม่ได้เลือก" 
+        itemTextField="name">
+        <ng-template ionicSelectableCloseButtonTemplate>
+          <ion-icon name="close"></ion-icon>
+      </ng-template>
+    </ionic-selectable>
+    </ion-item> 
 </ion-content>
