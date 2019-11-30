@@ -23,16 +23,11 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
-      <ion-item *ngFor="let pcsg of pcsg_list;let i = index">
+    <ion-card *ngFor="let pcsg of pcsg_list;let i = index">
         <ion-item>
           <ion-label>{{(i+1)}}. {{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
         </ion-item>
-      </ion-item>
-    
-
     </ion-card>
-        
     <!-- fab placed to the bottom end -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="modal_insert_show()">
       <ion-fab-button color="success">
