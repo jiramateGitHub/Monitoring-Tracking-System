@@ -1,12 +1,21 @@
 <ion-header>
   <ion-toolbar>
-        <ion-buttons slot="start" (click)="closeModal()">
+      <ion-item lines="none">
+        <ion-buttons slot="start" size="small" (click)="closeModal()">
             <ion-icon name="close"></ion-icon>
         </ion-buttons>
-    <ion-title>สร้างกลุ่มกระบวนการ</ion-title>
+        <ion-title>สร้างกลุ่มกระบวนการ</ion-title>
+        <ion-buttons slot="end" (click)="addCustomer()">
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-buttons>
+      </ion-item>
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding="true">
+    <ion-item>
+      <ion-label position="floating">ชื่อกลุ่มกระบวนการ</ion-label>
+      <ion-input ></ion-input>
+    </ion-item>
 </ion-content>
