@@ -5,7 +5,7 @@
             <ion-icon name="close"></ion-icon>
         </ion-buttons>
         <ion-title>สร้างกลุ่มกระบวนการ</ion-title>
-        <ion-buttons slot="end" (click)="addCustomer()">
+        <ion-buttons slot="end" (click)="process_group_insert()">
             <ion-icon name="checkmark"></ion-icon>
         </ion-buttons>
       </ion-item>
@@ -24,19 +24,22 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">ชื่อภาษาอังกฤษ</ion-label>
-      <ion-input [(ngModel)]="pcsg_th"></ion-input>
+      <ion-input [(ngModel)]="pcsg_en"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>ผู้ดูแล</ion-label>
       <ionic-selectable 
-        [(ngModel)]="pcsg" 
-        [items]="users"
+        [(ngModel)]="pcsm_id" 
+        [items]="pcsm_list"
         [canSearch]="true"
-        itemValueField="ยังไม่ได้เลือก" 
-        itemTextField="name">
+        itemValueField="ps_fname" 
+        itemTextField="ps_fname">
         <ng-template ionicSelectableCloseButtonTemplate>
           <ion-icon name="close"></ion-icon>
-      </ng-template>
+        </ng-template>
+        <ng-template selectSearchableItemTemplate let-port="item">
+          {{pcsm_list.ps_fname}} ({{pcsm_list.ps_lname}})
+        </ng-template>
     </ionic-selectable>
     </ion-item> 
 </ion-content>
