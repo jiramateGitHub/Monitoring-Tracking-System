@@ -31,7 +31,8 @@ export class ProcessGroupInputPage implements OnInit {
   }
 
   process_group_insert(){
-    this.MtsProcessGroupService.process_group_insert(this.pcsg_code,this.pcsg_th,this.pcsg_en,this.pcsm_id.ps_id).subscribe(result => {
+    let ps_id = this.pcsm_id.ps_id.toString();
+    this.MtsProcessGroupService.process_group_insert(this.pcsg_code,this.pcsg_th,this.pcsg_en,ps_id).subscribe(result => {
         alert("insert success") ;
         this.get_process_manager();
         this.closeModal();
