@@ -19,11 +19,15 @@ export class ProcessGroupPage implements OnInit {
   ngOnInit() {  
   }
 
-  async presentModal_insert() {
+  async modal_insert_show() {
     const modal = await this.modalController.create({
       component: ProcessGroupInputPage
     });
     return await modal.present();
+  }
+
+  async closeModal(){
+    await this.modalController.dismiss();
   }
 
   async presentAlertCheckbox() {
