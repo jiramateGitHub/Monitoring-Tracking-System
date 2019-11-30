@@ -1,3 +1,4 @@
+import { ProcessGroupInputPage } from './config/process-group-input/process-group-input.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -14,10 +15,11 @@ import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProcessGroupInputPage
   ],
   entryComponents: [
-
+    ProcessGroupInputPage
   ],
   imports: [
     BrowserModule,

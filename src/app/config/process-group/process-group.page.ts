@@ -1,6 +1,9 @@
+import { ProcessGroupInputPage } from './../process-group-input/process-group-input.page';
+
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-process-group',
@@ -13,12 +16,12 @@ export class ProcessGroupPage implements OnInit {
               private modalController: ModalController
               ) { }
 
-  ngOnInit() {
+  ngOnInit() {  
   }
 
   async presentModal_insert() {
     const modal = await this.modalController.create({
-      component: InsertUserPage
+      component: ProcessGroupInputPage
     });
     return await modal.present();
   }
