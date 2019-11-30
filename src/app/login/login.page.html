@@ -1,9 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+  <div class="login-header ion-padding">
+    <!-- <img class="logo-img" src="assets/img/Logo.png"> -->
+  </div>
 </ion-header>
 
 <ion-content>
+  <div>
+    <br>
+    <img class="logo-img" src="assets/img/Logo.png">
+    <br>
+  </div>
+  
+
+  <ion-card>
+    <ion-card-header>
+      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+      <ion-card-title class="ion-text-center">เข้าสู่ระบบ</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>ชื่อผู้ใช้ : </ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label>รหัสผ่าน : </ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button expand="block">เข้าสู่ระบบ</ion-button>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
