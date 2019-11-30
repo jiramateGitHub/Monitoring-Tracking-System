@@ -74,13 +74,18 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
 }
 ion-toolbar {
   --background:  #7044ff;
   --color:#ffffff;
   min-height: 20px;
 }
-
+ion-toolbar ion-item{
+  --background:  #7044ff;
+  --color:#ffffff;
+  min-height: 20px;
+}
 * {
   font-family: 'Sarabun', sans-serif !important;
 }
