@@ -35,6 +35,11 @@ export class AppComponent {
       title: 'ติดตามงาน',
       url: '/case',
       icon: 'book'
+    },
+    {
+      title: 'Login',
+      url: '/login',
+      icon: 'book'
     }
   ];
 

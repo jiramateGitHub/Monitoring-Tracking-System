@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-process-group',
@@ -8,9 +9,18 @@ import { AlertController } from '@ionic/angular';
 })
 export class ProcessGroupPage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  constructor(public alertController: AlertController,
+              private modalController: ModalController
+              ) { }
 
   ngOnInit() {
+  }
+
+  async presentModal_insert() {
+    const modal = await this.modalController.create({
+      component: InsertUserPage
+    });
+    return await modal.present();
   }
 
   async presentAlertCheckbox() {
@@ -49,7 +59,7 @@ export class ProcessGroupPage implements OnInit {
             console.log('Confirm Ok');
           }
         }
-      ]
+      ] 
     });
 
     await alert.present();

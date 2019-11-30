@@ -1,18 +1,38 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    <ion-title>จัดการกลุ่มกระบวนการ</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentAlertCheckbox()">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>จัดการกลุ่มกระบวนการ</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- fab placed to the bottom end -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentModal_insert()">
       <ion-fab-button>
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
-  </ion-fab>
-
-
-</ion-content>
+    </ion-fab>
+  
+    <ion-list  *ngFor="let customer of customerList;let i = index">
+        <ion-item-sliding>
+            <ion-item-options side="start" (click)="deleteCustomer(customer.customerNumber)">
+              <ion-item-option color="danger" expandable>
+                Delete
+              </ion-item-option>
+            </ion-item-options>
+        
+            <ion-item>
+              <ion-label>{{(i+1)}}. {{customer.contactFirstName}} {{customer.contactLastName}}</ion-label>
+            </ion-item>
+        
+            <ion-item-options side="end" (click)="presentModal_insert()">
+              <ion-item-option color="tertiary" expandable>
+                Edit
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+  
