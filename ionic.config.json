@@ -1,5 +1,7 @@
 {
   "name": "MTS-System",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
