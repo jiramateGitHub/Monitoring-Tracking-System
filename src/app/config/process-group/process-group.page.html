@@ -8,12 +8,12 @@
   </ion-header>
   
   <ion-content>
-    <ion-item lines="none">
+    <ion-item lines="none" *ngIf="pcsg_list == null ">
       <ion-label>
           เริ่มต้นใช้งาน
       </ion-label>
     </ion-item>
-    <ion-card>
+    <ion-card *ngIf="pcsg_list == null ">
       <img src="https://image.freepik.com/free-vector/error-404-concept-landing-page_52683-18633.jpg" />
       <ion-card-header>
         <ion-card-subtitle text-center><b>รักษาการติดตามและทำให้เป็นปัจจุบัน</b></ion-card-subtitle>

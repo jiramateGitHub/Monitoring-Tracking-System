@@ -24,6 +24,7 @@ export class ProcessGroupPage implements OnInit {
               ) { }
 
   ngOnInit() {  
+    this.pcsg_list = null;
     this.get_process_group();
   }
 

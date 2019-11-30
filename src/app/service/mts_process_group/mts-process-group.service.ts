@@ -22,9 +22,11 @@ export class MtsProcessGroupService {
       "pcsg_code": pcsg_code,
       "pcsg_th": pcsg_th,
       "pcsg_en": pcsg_en,
-      "pcsg_active": 'Y',
-      "ps_id":ps_id
+      "ps_id":ps_id,
+      "UsPsCode":"60160157"
     }
+    console.log(data)
+    
     return this.http.post("https://10.80.39.17/TSP60/Thepd-nu/index.php/mts/api/process_group_insert",data).map(res => res.json());
   }
 }

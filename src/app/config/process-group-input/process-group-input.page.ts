@@ -27,14 +27,14 @@ export class ProcessGroupInputPage implements OnInit {
   get_process_manager(){
     this.MtsProcessGroupService.get_hr_person().subscribe(result => {
       this.pcsm_list = result;
-      console.log(this.pcsm_list)
     });
   }
 
   process_group_insert(){
-    this.MtsProcessGroupService.process_group_insert(this.pcsg_code,this.pcsg_th,this.pcsg_en,this.pcsm_id).subscribe(result => {
+    this.MtsProcessGroupService.process_group_insert(this.pcsg_code,this.pcsg_th,this.pcsg_en,this.pcsm_id.ps_id).subscribe(result => {
         alert("insert success") ;
         this.get_process_manager();
+        this.closeModal();
     });
   }
 

@@ -32,9 +32,8 @@
         [(ngModel)]="pcsm_id" 
         [items]="pcsm_list"
         [canSearch]="true"
-        itemValueField="pf_id" 
-        itemTextField="ps_fname"
-        (onChange)="portChange($event)">
+        itemValueField="ps_fname" 
+        itemTextField="ps_fname">
         <ng-template ionicSelectableCloseButtonTemplate>
           <ion-icon name="close"></ion-icon>
         </ng-template>
