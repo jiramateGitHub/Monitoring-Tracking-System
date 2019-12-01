@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'case-input', loadChildren: './config/case-input/case-input.module#CaseInputPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'state', loadChildren: './config/state/state.module#StatePageModule' },
-  { path: 'state-input', loadChildren: './config/state-input/state-input.module#StateInputPageModule' }
+  { path: 'state-input', loadChildren: './config/state-input/state-input.module#StateInputPageModule' },
+  { path: 'task', loadChildren: './config/task/task/task.module#TaskPageModule' }
 ];
 
 @NgModule({

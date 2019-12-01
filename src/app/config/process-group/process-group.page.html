@@ -24,8 +24,17 @@
     </ion-card>
 
     <ion-card *ngFor="let pcsg of pcsg_list;let i = index">
+        <ion-item lines="none">
+          <ion-label stacked class="my-label">{{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="key" size="small"></ion-icon>
+          <ion-label>&nbsp;{{pcsg.pcsg_code}}</ion-label>
+          <ion-icon name="person" size="small"></ion-icon>
+          <ion-label>&nbsp;{{pcsg.ps_fname}} {{pcsg.ps_lname}}</ion-label>
+        </ion-item >
         <ion-item>
-          <ion-label>{{(i+1)}}. {{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
+          
         </ion-item>
     </ion-card>
     <!-- fab placed to the bottom end -->
@@ -34,5 +43,10 @@
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>   
+    
   </ion-content>
+  
+
+
+  
   

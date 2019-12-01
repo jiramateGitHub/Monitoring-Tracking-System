@@ -12,10 +12,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
-      title: 'หน้าหลัก',
+      title: 'ข่าวสาร',
       url: '/home',
       icon: 'home'
     },
+    {
+      title: 'ติดตามงาน',
+      url: '/task',
+      icon: 'folder-open'
+    }
+  ];
+
+  public appPages2 = [
     {
       title: 'จัดการกลุ่มกระบวนการ',
       url: '/process-group',
@@ -24,22 +32,12 @@ export class AppComponent {
     {
       title: 'จัดการกระบวนการ',
       url: '/process',
-      icon: 'book'
+      icon: 'star'
     },
     {
       title: 'จัดการเรื่อง',
       url: '/case',
-      icon: 'book'
-    },
-    {
-      title: 'ติดตามงาน',
-      url: '/case',
-      icon: 'book'
-    },
-    {
-      title: 'Login',
-      url: '/login',
-      icon: 'book'
+      icon: 'git-branch'
     }
   ];
 

@@ -80,13 +80,15 @@
 ion-toolbar {
   --background: #7044ff;
   --color: #ffffff;
-  min-height: 20px;
 }
 ion-toolbar ion-item{
   --background:  #7044ff;
   --color:#ffffff;
-  min-height: 20px;
 }
 * {
   font-family: 'Sarabun', sans-serif !important;
+}
+.active-item {
+  --background:  #e9e9eb;
+  --color: #7044ff !important;
 }
