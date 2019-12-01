@@ -52,34 +52,56 @@ export class ProcessGroupPage implements OnInit {
     }, 1000);
   }
 
-  async presentAlert() {
+  async presentAlert(pcsg_id:string,pcsg_th:string) {
     const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      header: 'ข้อความแจ้งเตือน',
+      message: pcsg_th,
       buttons: [
         {
           text: 'แก้ไข',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
+            this.modal_insert_show()
           }
         },
         {
           text: 'ลบ',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
+            this.process_group_active_update_AlertConfirm(pcsg_id)
           }
         },
         {
           text: 'ยกเลิก',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
           }
         }
+      ]
+    });
 
+    await alert.present();
+  }
+
+  async process_group_active_update_AlertConfirm(pcsg_id:string) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบ',
+      message: 'ลบกลุ่มกระบวนการนี้?',
+      buttons: [
+        {
+          text: 'ไม่ลบ',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'ลบ',
+          handler: () => {
+            this.MtsProcessGroupService.process_group_active_update(pcsg_id).subscribe(result => {
+              this.get_process_group();
+           });
+          }
+        }
       ]
     });
 

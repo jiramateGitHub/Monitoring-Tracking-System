@@ -28,4 +28,12 @@ export class MtsProcessGroupService {
     return this.http.post("http://127.0.0.1:3000/process_group",data).map(res => res.json());
   }
 
+  process_group_active_update(pcsg_id:string){
+    let data = {
+      "pcsg_active": "N",
+      "pcsg_editor":"60160157"
+    }
+    return this.http.put("http://127.0.0.1:3000/process_group_active_update/"+pcsg_id,data).map(res => res.json());
+  }
+
 }
