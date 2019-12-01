@@ -1,3 +1,4 @@
+import { MtsProcessManagerService } from './../../service/mts_process_manager/mts-process-manager.service';
 import { MtsProcessGroupService } from './../../service/mts_process_group/mts-process-group.service';
 import { ProcessGroupInputPage } from './../process-group-input/process-group-input.page';
 
@@ -21,6 +22,7 @@ export class ProcessGroupPage implements OnInit {
   constructor(public alertController: AlertController,
               private modalController: ModalController,
               private MtsProcessGroupService:MtsProcessGroupService,
+              private MtsProcessManagerService:MtsProcessManagerService,
               public events: Events) { }
 
   ngOnInit() {  
@@ -37,6 +39,7 @@ export class ProcessGroupPage implements OnInit {
     this.MtsProcessGroupService.pcsg_code = '';
     this.MtsProcessGroupService.pcsg_th = '';
     this.MtsProcessGroupService.pcsg_en = '';
+    this.MtsProcessManagerService.pcsm_ps_id = '';
     this.MtsProcessGroupService.type_input = 'insert';
     const modal = await this.modalController.create({
       component: ProcessGroupInputPage
@@ -64,7 +67,7 @@ export class ProcessGroupPage implements OnInit {
     }, 1000);
   }
 
-  async presentAlert(pcsg_id:string,pcsg_code:string,pcsg_th:string,pcsg_en:string) {
+  async presentAlert(pcsg_id:string,pcsg_code:string,pcsg_th:string,pcsg_en:string,pcsm_ps_id:string) {
     const alert = await this.alertController.create({
       header: 'ข้อความแจ้งเตือน',
       message: pcsg_th,
@@ -77,6 +80,7 @@ export class ProcessGroupPage implements OnInit {
             this.MtsProcessGroupService.pcsg_code = pcsg_code;
             this.MtsProcessGroupService.pcsg_th = pcsg_th;
             this.MtsProcessGroupService.pcsg_en = pcsg_en;
+            this.MtsProcessManagerService.pcsm_ps_id = pcsm_ps_id;
             this.MtsProcessGroupService.type_input = "update";
             this.modal_update_show()
           }

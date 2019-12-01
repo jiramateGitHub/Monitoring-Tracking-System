@@ -30,7 +30,7 @@ export class ProcessGroupInputPage implements OnInit {
     this.pcsg_code = this.MtsProcessGroupService.pcsg_code;
     this.pcsg_th = this.MtsProcessGroupService.pcsg_th;
     this.pcsg_en = this.MtsProcessGroupService.pcsg_en;
-    this.pcsg_en = this.MtsProcessGroupService.pcsg_en;
+    this.pcsm_id = this.MtsProcessManagerService.pcsm_ps_id;
     this.type_input = this.MtsProcessGroupService.type_input;
   }
   

@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-      <ion-title>จัดการกลุ่มกระบวนการ</ion-title>
+        <ion-title>จัดการกลุ่มกระบวนการ</ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -27,10 +27,18 @@
       </ion-card-content>
     </ion-card>
 
+    <ion-list>
+        <ion-item>
+          <ion-icon slot="start" name="search" ></ion-icon>
+          <ion-label>ค้นหา</ion-label>
+        </ion-item>
+        
+      </ion-list>
+
     <ion-card *ngFor="let pcsg of pcsg_list;let i = index">
         <ion-item lines="none">
           <ion-label stacked class="my-label">{{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
-          <ion-buttons slot="end" (click)="presentAlert(pcsg.pcsg_id,pcsg.pcsg_code,pcsg.pcsg_th,pcsg.pcsg_en)">
+          <ion-buttons slot="end" (click)="presentAlert(pcsg.pcsg_id,pcsg.pcsg_code,pcsg.pcsg_th,pcsg.pcsg_en,pcsg.ps_id)">
           <ion-icon name="more" size="small"></ion-icon>
         </ion-buttons>
         </ion-item>

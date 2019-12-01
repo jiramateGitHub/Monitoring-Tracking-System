@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MtsProcessManagerService {
-
+  public type_input:string;
+  public pcsm_pcsg_id:string;
+  public pcsm_ps_id:string;
   constructor(private http:Http) { }
 
   process_manager_insert(pcsm_pcsg_id:string,pcsm_ps_id:string){
