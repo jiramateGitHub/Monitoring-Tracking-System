@@ -8,6 +8,10 @@
   </ion-header>
   
   <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <ion-item lines="none" *ngIf="pcsg_list == null ">
       <ion-label>
           เริ่มต้นใช้งาน
@@ -26,6 +30,9 @@
     <ion-card *ngFor="let pcsg of pcsg_list;let i = index">
         <ion-item lines="none">
           <ion-label stacked class="my-label">{{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
+          <ion-buttons slot="end" (click)="presentAlert()">
+          <ion-icon name="more" size="small"></ion-icon>
+        </ion-buttons>
         </ion-item>
         <ion-item lines="none">
           <ion-icon name="key" size="small"></ion-icon>

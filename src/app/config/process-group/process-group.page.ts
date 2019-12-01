@@ -45,4 +45,44 @@ export class ProcessGroupPage implements OnInit {
     });
   }
 
+  doRefresh(event) {
+    this.get_process_group()
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: [
+        {
+          text: 'แก้ไข',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        },
+        {
+          text: 'ลบ',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        },
+        {
+          text: 'ยกเลิก',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }
+
+      ]
+    });
+
+    await alert.present();
+  }
 }

@@ -33,12 +33,13 @@ export class LoginPage implements OnInit {
     for(let data of this.Member){
       if(data.username === this.username && data.password === this.password){
         found = true;
-        this.router.navigateByUrl('home');
         break;
       }                   
     }
     if(found === false){
       alert("Username or Password incorrect");
+    }else{
+      this.router.navigateByUrl('home');
     }
   }
 
