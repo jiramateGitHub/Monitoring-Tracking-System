@@ -4,8 +4,12 @@
         <ion-buttons slot="start" (click)="closeModal()">
             <ion-icon name="close" ></ion-icon>
         </ion-buttons>
-        <ion-title>สร้างกลุ่มกระบวนการ</ion-title>
-        <ion-buttons slot="end"  (click)="process_group_insert()">
+        <ion-title *ngIf="type_input == 'insert'">สร้างกลุ่มกระบวนการ</ion-title>
+        <ion-title *ngIf="type_input == 'update'">แก้ไขกลุ่มกระบวนการ</ion-title>
+        <ion-buttons slot="end"  (click)="process_group_insert()" *ngIf="type_input == 'insert'">
+            <ion-icon name="checkmark" ></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end"  (click)="process_group_update()" *ngIf="type_input == 'update'">
             <ion-icon name="checkmark" ></ion-icon>
         </ion-buttons>
       </ion-item>
@@ -16,15 +20,15 @@
 <ion-content padding="true">
     <ion-item>
       <ion-label position="floating">รหัส</ion-label>
-      <ion-input [(ngModel)]="pcsg_code"></ion-input>
+      <ion-input required [(ngModel)]="pcsg_code"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">ชื่อภาษาไทย</ion-label>
-      <ion-input [(ngModel)]="pcsg_th"></ion-input>
+      <ion-input required [(ngModel)]="pcsg_th"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">ชื่อภาษาอังกฤษ</ion-label>
-      <ion-input [(ngModel)]="pcsg_en"></ion-input>
+      <ion-input required [(ngModel)]="pcsg_en"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>ผู้ดูแล</ion-label>
@@ -32,7 +36,7 @@
         [(ngModel)]="pcsm_id" 
         [items]="pcsm_list"
         [canSearch]="true"
-        itemValueField="ps_fname" 
+        itemValueField="ps_id" 
         itemTextField="ps_fname">
         <ng-template ionicSelectableCloseButtonTemplate>
           <ion-icon name="close"></ion-icon>

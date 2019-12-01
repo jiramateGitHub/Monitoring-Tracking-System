@@ -33,6 +33,18 @@ export class ProcessGroupPage implements OnInit {
 
   
   async modal_insert_show() {
+    this.MtsProcessGroupService.pcsg_id = '';
+    this.MtsProcessGroupService.pcsg_code = '';
+    this.MtsProcessGroupService.pcsg_th = '';
+    this.MtsProcessGroupService.pcsg_en = '';
+    this.MtsProcessGroupService.type_input = 'insert';
+    const modal = await this.modalController.create({
+      component: ProcessGroupInputPage
+    });
+    return await modal.present();
+  }
+
+  async modal_update_show() {
     const modal = await this.modalController.create({
       component: ProcessGroupInputPage
     });
@@ -52,7 +64,7 @@ export class ProcessGroupPage implements OnInit {
     }, 1000);
   }
 
-  async presentAlert(pcsg_id:string,pcsg_th:string) {
+  async presentAlert(pcsg_id:string,pcsg_code:string,pcsg_th:string,pcsg_en:string) {
     const alert = await this.alertController.create({
       header: 'ข้อความแจ้งเตือน',
       message: pcsg_th,
@@ -61,7 +73,12 @@ export class ProcessGroupPage implements OnInit {
           text: 'แก้ไข',
           cssClass: 'secondary',
           handler: () => {
-            this.modal_insert_show()
+            this.MtsProcessGroupService.pcsg_id = pcsg_id;
+            this.MtsProcessGroupService.pcsg_code = pcsg_code;
+            this.MtsProcessGroupService.pcsg_th = pcsg_th;
+            this.MtsProcessGroupService.pcsg_en = pcsg_en;
+            this.MtsProcessGroupService.type_input = "update";
+            this.modal_update_show()
           }
         },
         {

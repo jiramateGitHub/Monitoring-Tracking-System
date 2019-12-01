@@ -30,7 +30,7 @@
     <ion-card *ngFor="let pcsg of pcsg_list;let i = index">
         <ion-item lines="none">
           <ion-label stacked class="my-label">{{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
-          <ion-buttons slot="end" (click)="presentAlert(pcsg.pcsg_id,pcsg.pcsg_th)">
+          <ion-buttons slot="end" (click)="presentAlert(pcsg.pcsg_id,pcsg.pcsg_code,pcsg.pcsg_th,pcsg.pcsg_en)">
           <ion-icon name="more" size="small"></ion-icon>
         </ion-buttons>
         </ion-item>

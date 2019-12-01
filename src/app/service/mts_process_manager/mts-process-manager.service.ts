@@ -17,4 +17,14 @@ export class MtsProcessManagerService {
     }
     return this.http.post("http://127.0.0.1:3000/process_manager",data).map(res => res.json());
   }
+  
+  process_manager_update(pcsm_pcsg_id:string,pcsm_ps_id:string){
+    let data = {
+      "pcsm_pcsg_id": pcsm_pcsg_id,
+      "pcsm_ps_id": pcsm_ps_id,
+      "pcsm_active": "Y",
+      "pcsm_editor":"60160157"
+    }
+    return this.http.put("http://127.0.0.1:3000/process_manager/"+pcsm_pcsg_id,data).map(res => res.json());
+  }
 }

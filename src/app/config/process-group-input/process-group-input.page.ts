@@ -16,6 +16,7 @@ export class ProcessGroupInputPage implements OnInit {
   private pcsg_th:string;
   private pcsg_en:string;
   private pcsm_list:any[];
+  private type_input:string;
   
   constructor(
     private modalController: ModalController,
@@ -25,6 +26,12 @@ export class ProcessGroupInputPage implements OnInit {
 
   ngOnInit() {
     this.get_process_manager();
+    this.pcsg_id = this.MtsProcessGroupService.pcsg_id;
+    this.pcsg_code = this.MtsProcessGroupService.pcsg_code;
+    this.pcsg_th = this.MtsProcessGroupService.pcsg_th;
+    this.pcsg_en = this.MtsProcessGroupService.pcsg_en;
+    this.pcsg_en = this.MtsProcessGroupService.pcsg_en;
+    this.type_input = this.MtsProcessGroupService.type_input;
   }
   
 
@@ -39,6 +46,16 @@ export class ProcessGroupInputPage implements OnInit {
     let ps_id = this.pcsm_id.ps_id;
     this.MtsProcessGroupService.process_group_insert(this.pcsg_code,this.pcsg_th,this.pcsg_en).subscribe(result => {
       this.MtsProcessManagerService.process_manager_insert(result.insertId,ps_id).subscribe(result => {
+      });
+    });
+    this.closeModal();
+  }
+
+  process_group_update(){
+    this.pcsm_id.toString();
+    let ps_id = this.pcsm_id.ps_id;
+    this.MtsProcessGroupService.process_group_update(this.pcsg_id,this.pcsg_code,this.pcsg_th,this.pcsg_en).subscribe(result => {
+      this.MtsProcessManagerService.process_manager_update(this.pcsg_id,ps_id).subscribe(result => {
       });
     });
     this.closeModal();

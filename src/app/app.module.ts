@@ -1,3 +1,6 @@
+import { MtsProcessService } from './service/mts_process/mts-process.service';
+import { MtsProcessManagerService } from './service/mts_process_manager/mts-process-manager.service';
+import { MtsProcessGroupService } from './service/mts_process_group/mts-process-group.service';
 import { ProcessGroupInputPage } from './config/process-group-input/process-group-input.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,7 +36,10 @@ import { IonicSelectableModule } from "ionic-selectable";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    MtsProcessGroupService,
+    MtsProcessManagerService,
+    MtsProcessService
   ],
   bootstrap: [AppComponent]
 })
