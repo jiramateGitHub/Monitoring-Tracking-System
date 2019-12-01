@@ -4,7 +4,7 @@ import { ProcessGroupInputPage } from './../process-group-input/process-group-in
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-
+import { Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-process-group',
@@ -20,14 +20,18 @@ export class ProcessGroupPage implements OnInit {
 
   constructor(public alertController: AlertController,
               private modalController: ModalController,
-              private MtsProcessGroupService:MtsProcessGroupService
-              ) { }
+              private MtsProcessGroupService:MtsProcessGroupService,
+              public events: Events) { }
 
   ngOnInit() {  
     this.pcsg_list = null;
     this.get_process_group();
+    this.events.subscribe('functionCall:get_process_group', eventData => { 
+      this.get_process_group();
+    });
   }
 
+  
   async modal_insert_show() {
     const modal = await this.modalController.create({
       component: ProcessGroupInputPage
