@@ -1,3 +1,5 @@
+import { MtsProcedureService } from './../../service/mts_procedure/mts-procedure.service';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./procedure.page.scss'],
 })
 export class ProcedurePage implements OnInit {
-
-  constructor() { }
+  private pcd_list:any[];
+  constructor(private alertController: AlertController,
+              private modalController: ModalController,
+              private MtsProcedureService:MtsProcedureService) { }
 
   ngOnInit() {
+    this.MtsProcedureService.pcd_pcs_id = "1";
+    this.get_procedure()
+  }
+
+  get_procedure(){
+    this.MtsProcedureService.get_procedure().subscribe(result => {
+      this.pcd_list = result;
+    });
   }
 
 }

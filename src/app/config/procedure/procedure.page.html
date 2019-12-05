@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>procedure</ion-title>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>จัดการขั้นตอน</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let pcd of pcd_list;let i = index">
+    <ion-item lines="none">
+      <ion-label stacked class="my-label">{{pcd.pcd_th}} ({{pcd.pcd_en}})</ion-label>
+      <ion-icon name="more" size="small"></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="key" size="small"></ion-icon>
+      <ion-label>&nbsp;{{pcd.pcd_abbr}}</ion-label>
+    </ion-item >
+    <ion-item>
+      
+    </ion-item>
+  </ion-card>
+  <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>   
 </ion-content>

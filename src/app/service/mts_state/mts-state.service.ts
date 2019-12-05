@@ -4,11 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class MtsCaseService {
+export class MtsStateService {
 
-  constructor(private Httpp:Http) { }
-
-  get_case(){
-    
-  }
+  constructor(private Httptp:Http) { }
 }

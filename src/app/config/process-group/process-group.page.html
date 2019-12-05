@@ -35,7 +35,7 @@
         
       </ion-list>
 
-    <ion-card *ngFor="let pcsg of pcsg_list;let i = index">
+    <ion-card *ngFor="let pcsg of pcsg_list;let i = index" (click)="process_page_show(pcsg.pcsg_id)">
         <ion-item lines="none">
           <ion-label stacked class="my-label">{{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
           <ion-buttons slot="end" (click)="presentAlert(pcsg.pcsg_id,pcsg.pcsg_code,pcsg.pcsg_th,pcsg.pcsg_en,pcsg.ps_id)">

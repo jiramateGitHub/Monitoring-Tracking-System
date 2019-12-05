@@ -6,7 +6,21 @@ import 'rxjs/add/operator/map'
   providedIn: 'root'
 })
 export class MtsProcessService {
-
+  public pcs_id;
+  public pcs_code;
+  public pcs_pcsg_id;
+  public pcs_year_type;
+  public pcs_year;
+  public pcs_seq;
+  public pcs_th;
+  public pcs_en;
+  public pcs_enforce;
+  public pcs_skip	;
+  public pcs_free	;
+  public pcs_active	;
+  public pcs_last_update	;
+  public pcs_editor	;
+  
   constructor(private http:Http) { }
 
   get_hr_person(){

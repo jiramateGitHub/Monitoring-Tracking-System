@@ -1,3 +1,5 @@
+import { MtsProcessService } from './../../service/mts_process/mts-process.service';
+import { Router } from '@angular/router';
 import { MtsProcessManagerService } from './../../service/mts_process_manager/mts-process-manager.service';
 import { MtsProcessGroupService } from './../../service/mts_process_group/mts-process-group.service';
 import { ProcessGroupInputPage } from './../process-group-input/process-group-input.page';
@@ -23,7 +25,9 @@ export class ProcessGroupPage implements OnInit {
               private modalController: ModalController,
               private MtsProcessGroupService:MtsProcessGroupService,
               private MtsProcessManagerService:MtsProcessManagerService,
-              public events: Events) { }
+              private MtsProcessService:MtsProcessService,
+              public events: Events,
+              private router:Router) { }
 
   ngOnInit() {  
     this.pcsg_list = null;
@@ -127,5 +131,10 @@ export class ProcessGroupPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  process_page_show(pcsg_id:string){
+    this.MtsProcessService.pcs_pcsg_id = pcsg_id;
+    this.router.navigateByUrl("process")
   }
 }
