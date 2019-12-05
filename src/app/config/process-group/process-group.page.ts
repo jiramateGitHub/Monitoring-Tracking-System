@@ -5,7 +5,7 @@ import { MtsProcessGroupService } from './../../service/mts_process_group/mts-pr
 import { ProcessGroupInputPage } from './../process-group-input/process-group-input.page';
 
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { Events } from '@ionic/angular';
 
@@ -21,8 +21,9 @@ export class ProcessGroupPage implements OnInit {
   private pcsg_th:string;
   private pcsg_en:string;
 
-  constructor(public alertController: AlertController,
+  constructor(private alertController: AlertController,
               private modalController: ModalController,
+              private toastController:ToastController,
               private MtsProcessGroupService:MtsProcessGroupService,
               private MtsProcessManagerService:MtsProcessManagerService,
               private MtsProcessService:MtsProcessService,
@@ -124,7 +125,9 @@ export class ProcessGroupPage implements OnInit {
           handler: () => {
             this.MtsProcessGroupService.process_group_active_update(pcsg_id).subscribe(result => {
               this.get_process_group();
+              this.presentToast("ลบกลุ่มกระบวนเรียบร้อย")
            });
+           
           }
         }
       ]
@@ -136,5 +139,13 @@ export class ProcessGroupPage implements OnInit {
   process_page_show(pcsg_id:string){
     this.MtsProcessService.pcs_pcsg_id = pcsg_id;
     this.router.navigateByUrl("process")
+  }
+
+  async presentToast(txt:string) {
+    const toast = await this.toastController.create({
+      message: txt,
+      duration: 2000
+    });
+    toast.present();
   }
 }

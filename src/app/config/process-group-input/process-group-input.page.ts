@@ -1,7 +1,7 @@
 import { MtsProcessManagerService } from './../../service/mts_process_manager/mts-process-manager.service';
 import { MtsProcessGroupService } from './../../service/mts_process_group/mts-process-group.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Events } from '@ionic/angular';
 
 @Component({
@@ -20,6 +20,7 @@ export class ProcessGroupInputPage implements OnInit {
   
   constructor(
     private modalController: ModalController,
+    private toastController:ToastController,
     private MtsProcessGroupService : MtsProcessGroupService,
     private MtsProcessManagerService:MtsProcessManagerService,
     public events: Events) { }
@@ -46,6 +47,7 @@ export class ProcessGroupInputPage implements OnInit {
     let ps_id = this.pcsm_id.ps_id;
     this.MtsProcessGroupService.process_group_insert(this.pcsg_code,this.pcsg_th,this.pcsg_en).subscribe(result => {
       this.MtsProcessManagerService.process_manager_insert(result.insertId,ps_id).subscribe(result => {
+        this.presentToast("เพิ่มกลุ่มกระบวนการเรียบร้อย")
       });
     });
     this.closeModal();
@@ -56,6 +58,7 @@ export class ProcessGroupInputPage implements OnInit {
     let ps_id = this.pcsm_id.ps_id;
     this.MtsProcessGroupService.process_group_update(this.pcsg_id,this.pcsg_code,this.pcsg_th,this.pcsg_en).subscribe(result => {
       this.MtsProcessManagerService.process_manager_update(this.pcsg_id,ps_id).subscribe(result => {
+        this.presentToast("แก้ไขกลุ่มกระบวนการเรียบร้อย")
       });
     });
     this.closeModal();
@@ -65,6 +68,14 @@ export class ProcessGroupInputPage implements OnInit {
   async closeModal(){
     await this.modalController.dismiss();
     this.events.publish('functionCall:get_process_group');
+  }
+
+  async presentToast(txt:string) {
+    const toast = await this.toastController.create({
+      message: txt,
+      duration: 2000
+    });
+    toast.present();
   }
 
 }
