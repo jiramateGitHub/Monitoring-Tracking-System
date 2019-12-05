@@ -14,7 +14,6 @@ export class ProcedurePage implements OnInit {
               private MtsProcedureService:MtsProcedureService) { }
 
   ngOnInit() {
-    this.MtsProcedureService.pcd_pcs_id = "1";
     this.get_procedure()
   }
 

@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-      </ion-buttons>
+      <ion-back-button slot="start" defaultHref="/process_group"></ion-back-button>
     <ion-title>จัดการกระบวนการ</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+      <ion-searchbar placeholder="ค้นหา"></ion-searchbar>
+
+  <ion-item *ngFor="let pcs of pcs_list;let i = index" (click)="procedure_page_show(pcs.pcs_id)">
+      <ion-label stacked class="my-label">{{pcs.pcs_th}} ({{pcs.pcs_en}})</ion-label>
+      <ion-icon name="more" size="small"></ion-icon>
+  </ion-item>
 
   
 </ion-content>

@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-      </ion-buttons>
+      <ion-back-button slot="start" defaultHref="/process"></ion-back-button>
       <ion-title>จัดการขั้นตอน</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-searchbar placeholder="ค้นหา"></ion-searchbar>
+
   <ion-card *ngFor="let pcd of pcd_list;let i = index">
     <ion-item lines="none">
       <ion-label stacked class="my-label">{{pcd.pcd_th}} ({{pcd.pcd_en}})</ion-label>
