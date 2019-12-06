@@ -17,7 +17,6 @@ export class ProcessInputPage implements OnInit {
     ngOnInit() {
     }
   
-  
     async closeModal(){
       await this.modalController.dismiss();
       this.events.publish('functionCall:get_process_group');

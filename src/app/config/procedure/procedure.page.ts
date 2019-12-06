@@ -1,3 +1,4 @@
+import { ProcedureInputPage } from './../procedure-input/procedure-input.page';
 import { MtsProcedureService } from './../../service/mts_procedure/mts-procedure.service';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +16,14 @@ export class ProcedurePage implements OnInit {
 
   ngOnInit() {
     this.get_procedure()
+  }
+
+  async modal_insert_show() {
+    this.MtsProcedureService.pcd_id = '';
+    const modal = await this.modalController.create({
+      component: ProcedureInputPage
+    });
+    return await modal.present();
   }
 
   get_procedure(){
