@@ -29,7 +29,7 @@
 
     <ion-searchbar placeholder="ค้นหา"></ion-searchbar>
 
-    <ion-card *ngFor="let pcsg of pcsg_list;let i = index" >
+    <ion-card *ngFor="let pcsg of pcsg_list;let i = index" color="danger">
         <ion-item lines="none">
           <ion-label stacked class="my-label" (click)="process_page_show(pcsg.pcsg_id)">{{pcsg.pcsg_th}} ({{pcsg.pcsg_en}})</ion-label>
           <ion-buttons slot="end" (click)="presentAlert(pcsg.pcsg_id,pcsg.pcsg_code,pcsg.pcsg_th,pcsg.pcsg_en,pcsg.ps_id)">
@@ -42,9 +42,6 @@
           <ion-icon name="person" size="small"></ion-icon>
           <ion-label>&nbsp;{{pcsg.ps_fname}} {{pcsg.ps_lname}}</ion-label>
         </ion-item >
-        <ion-item>
-          
-        </ion-item>
     </ion-card>
     <!-- fab placed to the bottom end -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="modal_insert_show()">

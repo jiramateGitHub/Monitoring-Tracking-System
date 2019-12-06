@@ -1,3 +1,7 @@
+import { CaseInputPage } from './config/case-input/case-input.page';
+import { StateInputPage } from './config/state-input/state-input.page';
+import { ProcedureInputPage } from './config/procedure-input/procedure-input.page';
+import { ProcessInputPage } from './config/process-input/process-input.page';
 import { ComponentsModule } from './components/components.module';
 import { MtsProcessService } from './service/mts_process/mts-process.service';
 import { MtsProcessManagerService } from './service/mts_process_manager/mts-process-manager.service';
@@ -22,10 +26,18 @@ import { IonicSelectableModule } from "ionic-selectable";
 @NgModule({
   declarations: [
     AppComponent,
-    ProcessGroupInputPage
+    ProcessGroupInputPage,
+    ProcessInputPage,
+    ProcedureInputPage,
+    StateInputPage,
+    CaseInputPage
   ],
   entryComponents: [
-    ProcessGroupInputPage
+    ProcessGroupInputPage,
+    ProcessInputPage,
+    ProcedureInputPage,
+    StateInputPage,
+    CaseInputPage
   ],
   imports: [
     BrowserModule,

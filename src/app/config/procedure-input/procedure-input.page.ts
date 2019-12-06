@@ -1,3 +1,4 @@
+import { ModalController, Events } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProcedureInputPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController:ModalController,
+              private events:Events) { }
 
   ngOnInit() {
   }
+
+
+  async closeModal(){
+    await this.modalController.dismiss();
+    this.events.publish('functionCall:get_process_group');
+  }
+  
 
 }
