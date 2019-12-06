@@ -25,14 +25,9 @@ export class AppComponent {
 
   public appPages2 = [
     {
-      title: 'จัดการกลุ่มกระบวนการ',
+      title: 'จัดการรูปแบบ',
       url: '/process-group',
       icon: 'flag'
-    },
-    {
-      title: 'จัดการกระบวนการ',
-      url: '/process',
-      icon: 'star'
     },
     {
       title: 'จัดการเรื่อง',
