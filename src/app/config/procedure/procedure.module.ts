@@ -1,3 +1,4 @@
+import { StatePage } from './../state/state.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,8 +20,13 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild([
+      {
+        path: "",
+        component: ProcedurePage
+      }
+    ])
   ],
-  declarations: [ProcedurePage]
+  declarations: [ProcedurePage,StatePage]
 })
 export class ProcedurePageModule {}

@@ -1,3 +1,4 @@
+import { ComponentsModule } from './components/components.module';
 import { MtsProcessService } from './service/mts_process/mts-process.service';
 import { MtsProcessManagerService } from './service/mts_process_manager/mts-process-manager.service';
 import { MtsProcessGroupService } from './service/mts_process_group/mts-process-group.service';
@@ -31,7 +32,8 @@ import { IonicSelectableModule } from "ionic-selectable";
     AppRoutingModule, 
     FormsModule,
     HttpModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    ComponentsModule
   ],
   providers: [
     StatusBar,

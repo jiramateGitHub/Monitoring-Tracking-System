@@ -19,6 +19,36 @@
       <ion-label>&nbsp;{{pcd.pcd_abbr}}</ion-label>
     </ion-item >
   </ion-card>
+
+  <ion-card (click)="expandItem(item)" *ngFor="let item of items">
+    <ion-card-header>
+      <ion-card-title>My Neighbor Totoro</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+        <app-expandable expandHeight="100px" [expanded]="item.expanded">
+            <p>
+              Hello there.
+            </p>
+            <p>
+              Hello there.
+            </p>
+            <p>
+              Hello there.
+            </p>
+            <p>
+              Hello there.
+            </p>
+            <p>
+              Hello there.
+            </p>
+            <p>
+              Hello there.
+            </p>
+          </app-expandable>
+    </ion-card-content>
+  </ion-card>
+
   <!-- fab placed to the bottom end -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
     <ion-fab-button color="success">
