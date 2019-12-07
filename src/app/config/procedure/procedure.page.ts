@@ -2,6 +2,7 @@ import { ProcedureInputPage } from './../procedure-input/procedure-input.page';
 import { MtsProcedureService } from './../../service/mts_procedure/mts-procedure.service';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-procedure',
@@ -9,13 +10,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./procedure.page.scss'],
 })
 export class ProcedurePage implements OnInit {
+
   private pcd_list:any[];
+  state:any[];
+  automaticClose = false;
+
   constructor(private alertController: AlertController,
               private modalController: ModalController,
-              private MtsProcedureService:MtsProcedureService) { }
+              private MtsProcedureService:MtsProcedureService,
+              private http:HttpClient) { }
 
   ngOnInit() {
     this.get_procedure()
+    this.state = [
+      {
+        "name" : "Specials",
+        "children" : [
+          {
+            "name" : "Special Academy"
+          }
+        ] 
+      }
+    ]
   }
 
   async modal_insert_show() {
@@ -31,5 +47,21 @@ export class ProcedurePage implements OnInit {
       this.pcd_list = result;
     });
   }
+
+  toggleSection(index){
+    this.state[index].open = !this.state[index].open;
+
+    if(this.automaticClose && this.state[index].open){
+      this.state
+      .filter((item, itemIndex) => itemIndex != index)
+      .map(item => item.open = false)
+    }
+  }
+
+  toggleItem(index, childIndex){
+    this.state[index].children[childIndex].open = !this.state[index].children[childIndex].open;
+  }
+
+
 
 }

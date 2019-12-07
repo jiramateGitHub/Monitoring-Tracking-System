@@ -1,4 +1,4 @@
-import { StatePage } from './../config/state/state.page';
+import { StateComponent } from './state/state.component';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,10 +7,10 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    StatePage
+    StateComponent
   ],
   exports:[
-    StatePage
+    StateComponent
   ],
   imports: [
     CommonModule,
