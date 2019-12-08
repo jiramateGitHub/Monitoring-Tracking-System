@@ -37,13 +37,11 @@
         [items]="pcsm_list"
         [canSearch]="true"
         itemValueField="ps_id" 
-        itemTextField="ps_fname">
+        itemTextField="name">
         <ng-template ionicSelectableCloseButtonTemplate>
           <ion-icon name="close"></ion-icon>
         </ng-template>
-        <ng-template selectSearchableItemTemplate let-port="item">
-          {{pcsm_list.ps_fname}} ({{pcsm_list.ps_lname}})
-        </ng-template>
+
     </ionic-selectable>
     </ion-item> 
 </ion-content>

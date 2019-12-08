@@ -87,7 +87,12 @@ ion-toolbar ion-item{
 * {
   font-family: 'Sarabun', sans-serif !important;
 }
+
 .active-item {
   --background:  #e9e9eb;
-  --color: #7044ff !important;
+  --color: var(--ion-color-primary) !important;
+  border-left:8px solid var(--ion-color-primary);
+}
+.active-item  ion-icon{
+  color:var(--ion-color-primary)
 }
