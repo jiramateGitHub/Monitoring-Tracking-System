@@ -1,3 +1,5 @@
+import { MtsProcedureStateService } from './../../service/mts_procedure_state/mts-procedure-state.service';
+import { MtsStateService } from './../../service/mts_state/mts-state.service';
 import { ProcedureInputPage } from './../procedure-input/procedure-input.page';
 import { MtsProcedureService } from './../../service/mts_procedure/mts-procedure.service';
 import { AlertController, ModalController } from '@ionic/angular';
@@ -18,6 +20,8 @@ export class ProcedurePage implements OnInit {
   constructor(private alertController: AlertController,
               private modalController: ModalController,
               private MtsProcedureService:MtsProcedureService,
+              private MtsStateService:MtsStateService,
+              private MtsProcedureStateService:MtsProcedureStateService,
               private http:HttpClient) { }
 
   ngOnInit() {
@@ -46,8 +50,15 @@ export class ProcedurePage implements OnInit {
   get_procedure(){
     this.MtsProcedureService.get_procedure().subscribe(result => {
       this.pcd_list = result;
-      console.log(result)
       this.state = result;
+      console.log(result)
+      for (let i = 0; i < this.state.length; i++) {
+        this.MtsProcedureStateService.pcds_pcd_id = this.state[i].pcd_id
+        this.MtsProcedureStateService.get_procedure().subscribe(result => {
+          this.state[i].children = result
+        });
+      }
+      console.log(this.state)
     });
   }
 
