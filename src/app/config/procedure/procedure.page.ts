@@ -22,16 +22,17 @@ export class ProcedurePage implements OnInit {
 
   ngOnInit() {
     this.get_procedure()
-    this.state = [
-      {
-        "name" : "Specials",
-        "children" : [
-          {
-            "name" : "Special Academy"
-          }
-        ] 
-      }
-    ]
+    // this.state = [
+    //   {
+    //     "name" : "Specials",
+    //     "children" : [
+    //       {
+    //         "name" : "Special Academy"
+    //       }
+    //     ] 
+    //   }
+    // ]
+
   }
 
   async modal_insert_show() {
@@ -45,6 +46,8 @@ export class ProcedurePage implements OnInit {
   get_procedure(){
     this.MtsProcedureService.get_procedure().subscribe(result => {
       this.pcd_list = result;
+      console.log(result)
+      this.state = result;
     });
   }
 

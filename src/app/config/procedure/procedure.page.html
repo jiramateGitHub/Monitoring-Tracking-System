@@ -14,7 +14,8 @@
       <ion-icon slot="start" name="arrow-forward" *ngIf="!item.open"></ion-icon>
       <ion-icon slot="start" name="arrow-down" *ngIf="item.open"></ion-icon>
       <ion-label>
-        {{item.name}}
+        {{item.pcd_abbr}}
+        {{item.pcd_th}}
       </ion-label>
     </ion-item>
     <div *ngIf="item.children && item.open">

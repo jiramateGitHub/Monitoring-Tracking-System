@@ -12,7 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
-      title: 'ข่าวสาร',
+      title: 'หน้าหลัก',
       url: '/home',
       icon: 'home'
     },

@@ -20,14 +20,14 @@
     <ion-card *ngIf="pcsg_list == null ">
       <img src="https://image.freepik.com/free-vector/error-404-concept-landing-page_52683-18633.jpg" />
       <ion-card-header>
-        <ion-card-subtitle text-center><b>รักษาการติดตามและทำให้เป็นปัจจุบัน</b></ion-card-subtitle>
+        <ion-card-subtitle text-center><b>กรุณาสร้างกลุ่มกระบวนการเพื่อใช้งาน</b></ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        กรุณาสร้างกลุ่มกระบวนการเพื่อใช้งาน
+        
       </ion-card-content>
     </ion-card>
 
-    <ion-searchbar placeholder="ค้นหา"></ion-searchbar>
+    <ion-searchbar placeholder="ค้นหา" *ngIf="pcsg_list != null"></ion-searchbar>
 
     <ion-card *ngFor="let pcsg of pcsg_list;let i = index" color="danger">
         <ion-item lines="none">
