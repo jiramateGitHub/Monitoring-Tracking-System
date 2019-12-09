@@ -9,15 +9,15 @@
 
     <ion-searchbar placeholder="ค้นหา"></ion-searchbar>
     <ion-list *ngFor="let pcs of pcs_list;let i = index">
-        <ion-item (click)="procedure_page_show(pcs.pcs_id)">
-          <ion-label>
+        <ion-item >
+          <ion-label (click)="procedure_page_show(pcs.pcs_id)">
               <h3>{{pcs.pcs_code}}</h3>
               <p>{{pcs.pcs_th}} ({{pcs.pcs_en}})</p>
             </ion-label>
             <ion-buttons slot="end" >
               <ion-icon name="more" size="small"></ion-icon>
             </ion-buttons>
-        </ion-item>
+        </ion-item >
     </ion-list>
 
     <!-- fab placed to the bottom end -->
