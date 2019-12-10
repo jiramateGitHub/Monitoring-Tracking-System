@@ -29,13 +29,12 @@
       <ion-item>
         <ion-label>ผู้ดูแล</ion-label>
         <ionic-selectable 
-          [(ngModel)]="pcsg" 
-          [items]="users"
-          [canSearch]="true"
-          itemValueField="ยังไม่ได้เลือก" 
-          itemTextField="name">
-          <ng-template ionicSelectableCloseButtonTemplate>
-            <ion-icon name="close"></ion-icon>
+        [items]="pcsm_list"
+        [canSearch]="true"
+        itemValueField="ps_id" 
+        itemTextField="name">
+        <ng-template ionicSelectableCloseButtonTemplate>
+          <ion-icon name="close"></ion-icon>
         </ng-template>
       </ionic-selectable>
       </ion-item> 
