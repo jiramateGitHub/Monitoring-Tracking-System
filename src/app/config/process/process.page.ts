@@ -1,3 +1,4 @@
+import { HrPersonService } from './../../service/hr_person/hr-person.service';
 import { ProcessInputPage } from './../process-input/process-input.page';
 import { MtsProcedureService } from './../../service/mts_procedure/mts-procedure.service';
 import { Router } from '@angular/router';
@@ -12,13 +13,16 @@ import { Events } from '@ionic/angular';
 })
 export class ProcessPage implements OnInit {
   private pcs_list:any[];
-  constructor(private alertController: AlertController,
-              private modalController: ModalController,
-              private router:Router,
-              private events:Events,
-              private toastController:ToastController,
-              private MtsProcessService:MtsProcessService,
-              private MtsProcedureService:MtsProcedureService) { }
+  constructor(
+    private alertController: AlertController,
+    private modalController: ModalController,
+    private router:Router,
+    private events:Events,
+    private toastController:ToastController,
+    private MtsProcessService:MtsProcessService,
+    private MtsProcedureService:MtsProcedureService,
+    private HrPersonService:HrPersonService
+  ) { }
 
   ngOnInit() {
     this.pcs_list = null
@@ -28,9 +32,25 @@ export class ProcessPage implements OnInit {
     });
   }
 
+  doRefresh(event) {
+    this.get_process()
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
+
+  async presentToast(txt:string) {
+    const toast = await this.toastController.create({
+      message: txt,
+      duration: 2000
+    });
+    toast.present();
+  }
+
   get_process(){
     this.MtsProcessService.get_process().subscribe(result => {
       this.pcs_list = result;
+      console.log(this.pcs_list)
     });
   }
 
@@ -60,11 +80,50 @@ export class ProcessPage implements OnInit {
     this.router.navigateByUrl("procedure")
   }
 
-  async presentAlert(pcs_id:string,pcs_code:string,pcs_th:string,pcs_en:string,pcs_year_type:string,pcs_year:string,pcs_enforce:string) {
+  async presentAlertRadio() {
+    let txt = 'ชื่อภาษาไทย: ' + this.MtsProcessService.pcs_th+'<br>'
+        txt += 'ชื่อภาษาอังกฤษ: ' + this.MtsProcessService.pcs_en+'<br>'
+        if(this.MtsProcessService.pcs_year_type == "1"){
+          txt += 'ปีปฏิทิน: '+ this.MtsProcessService.pcs_year
+        }else if(this.MtsProcessService.pcs_year_type == "2"){
+          txt += 'ปีงบประมาณ: ' + this.MtsProcessService.pcs_year
+        }else if(this.MtsProcessService.pcs_year_type == "3"){
+          txt += 'ปีการศึกษา: ' + this.MtsProcessService.pcs_year
+        }
+        txt += "<br>สถานะ: บังคับใช้งาน"
+        txt += "<br>ผู้ดูแล: " + this.HrPersonService.ps_fname + ' ' + this.HrPersonService.ps_lname
+    const alert = await this.alertController.create({
+      header: 'รายละเอียด',
+      subHeader: 'รหัสกระบวนการ: ' + this.MtsProcessService.pcs_code,
+      message: txt,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async presentAlert(pcs_id:string,pcs_code:string,pcs_th:string,pcs_en:string,pcs_year_type:string,pcs_year:string,pcs_enforce:string,ps_fname:string,ps_lname:string) {
     const alert = await this.alertController.create({
       header: 'ข้อความแจ้งเตือน',
       message: pcs_th,
       buttons: [
+        {
+          text: 'ดูรายละเอียด',
+          cssClass: 'secondary',
+          handler: () => {
+              this.MtsProcessService.pcs_id = pcs_id;
+              this.MtsProcessService.pcs_code = pcs_code;
+              this.MtsProcessService.pcs_th = pcs_th;
+              this.MtsProcessService.pcs_en = pcs_en;
+              this.MtsProcessService.pcs_year_type = pcs_year_type;
+              this.MtsProcessService.pcs_year = pcs_year;
+              this.MtsProcessService.pcs_enforce = pcs_enforce;
+              this.HrPersonService.ps_fname = ps_fname;
+              this.HrPersonService.ps_lname = ps_lname;
+
+              this.presentAlertRadio()
+          }
+        },
         {
           text: 'แก้ไข',
           cssClass: 'secondary',
@@ -126,14 +185,6 @@ export class ProcessPage implements OnInit {
     });
 
     await alert.present();
-  }
-
-  async presentToast(txt:string) {
-    const toast = await this.toastController.create({
-      message: txt,
-      duration: 2000
-    });
-    toast.present();
   }
 
 }

@@ -74,6 +74,7 @@ export class MtsProcessService {
       "pcs_active": "Y",
       "pcs_editor":"60160157"
     }
+    console.log(data)
     return this.http.put("http://127.0.0.1:3000/process/"+this.pcs_id,data).map(res => res.json());
   }
 

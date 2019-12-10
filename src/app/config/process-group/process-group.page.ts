@@ -55,6 +55,12 @@ export class ProcessGroupPage implements OnInit {
     toast.present();
   }
 
+  get_process_group(){
+    this.MtsProcessGroupService.get_process_group().subscribe(result => {
+      this.pcsg_list = result;
+    });
+  }
+
   async modal_insert_show() {
     this.MtsProcessGroupService.pcsg_id = '';
     this.MtsProcessGroupService.pcsg_code = '';
@@ -74,13 +80,6 @@ export class ProcessGroupPage implements OnInit {
     });
     return await modal.present();
   }
-
-  get_process_group(){
-    this.MtsProcessGroupService.get_process_group().subscribe(result => {
-      this.pcsg_list = result;
-    });
-  }
-
 
   async presentAlert(pcsg_id:string,pcsg_code:string,pcsg_th:string,pcsg_en:string,pcsm_ps_id:string) {
     const alert = await this.alertController.create({
