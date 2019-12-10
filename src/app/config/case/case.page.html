@@ -8,5 +8,26 @@
   </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
+  <ion-list *ngFor="let case of case_list;let i = index">
+    <ion-item >
+      <ion-label >
+          <h3>{{case.case_code}}</h3>
+          <p>{{case.case_th}} ({{case.case_en}})</p>
+        </ion-label>
+        <ion-buttons slot="end" (click)="presentAlert(case.case_id,case.case_code,case.case_th,case.case_en)" >
+          <ion-icon name="more" size="small"></ion-icon>
+        </ion-buttons>
+    </ion-item >
+  </ion-list>
+
+ <!-- fab placed to the bottom end -->
+ <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="modal_insert_show()">
+    <ion-fab-button color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

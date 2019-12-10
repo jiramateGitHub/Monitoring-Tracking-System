@@ -25,7 +25,7 @@ export class MtsProcessService {
   constructor(private http:Http) { }
 
   get_hr_person(){
-    return this.http.get("https://10.80.39.17/TSP60/Thepd-nu/index.php/mts/api/get_hr_person").map(res => res.json());
+    return this.http.get("http://127.0.0.1:3000/hr_person").map(res => res.json());
   }
 
   get_process(){
@@ -74,7 +74,6 @@ export class MtsProcessService {
       "pcs_active": "Y",
       "pcs_editor":"60160157"
     }
-    console.log(data)
     return this.http.put("http://127.0.0.1:3000/process/"+this.pcs_id,data).map(res => res.json());
   }
 
