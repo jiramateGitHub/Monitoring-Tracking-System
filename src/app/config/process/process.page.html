@@ -14,7 +14,7 @@
               <h3>{{pcs.pcs_code}}</h3>
               <p>{{pcs.pcs_th}} ({{pcs.pcs_en}})</p>
             </ion-label>
-            <ion-buttons slot="end" >
+            <ion-buttons slot="end" (click)="presentAlert(pcs.pcs_id,pcs.pcs_code,pcs.pcs_th,pcs.pcs_en)" >
               <ion-icon name="more" size="small"></ion-icon>
             </ion-buttons>
         </ion-item >

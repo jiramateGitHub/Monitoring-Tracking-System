@@ -13,7 +13,6 @@
             <ion-icon name="checkmark" ></ion-icon>
         </ion-buttons>
       </ion-item>
-    
   </ion-toolbar>
 </ion-header>
 
@@ -34,7 +33,7 @@
       <ion-label>ผู้ดูแล</ion-label>
       <ionic-selectable 
         [(ngModel)]="pcsm_id" 
-        [items]="pcsm_list"
+        [items]="ps_list"
         [canSearch]="true"
         itemValueField="ps_id" 
         itemTextField="name">

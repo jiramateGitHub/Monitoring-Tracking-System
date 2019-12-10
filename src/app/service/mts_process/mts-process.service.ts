@@ -20,6 +20,7 @@ export class MtsProcessService {
   public pcs_active	;
   public pcs_last_update	;
   public pcs_editor	;
+  public type_input	;
   
   constructor(private http:Http) { }
 
@@ -28,6 +29,10 @@ export class MtsProcessService {
   }
 
   get_process(){
+    return this.http.get("http://127.0.0.1:3000/process/"+this.pcs_pcsg_id).map(res => res.json());
+  }
+
+  process_active_update(){
     return this.http.get("http://127.0.0.1:3000/process/"+this.pcs_pcsg_id).map(res => res.json());
   }
   

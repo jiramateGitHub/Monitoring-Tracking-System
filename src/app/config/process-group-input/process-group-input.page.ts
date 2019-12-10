@@ -15,7 +15,7 @@ export class ProcessGroupInputPage implements OnInit {
   private pcsg_code:string;
   private pcsg_th:string;
   private pcsg_en:string;
-  private pcsm_list:any[];
+  private ps_list:any[];
   private type_input:string;
   
   constructor(
@@ -38,7 +38,7 @@ export class ProcessGroupInputPage implements OnInit {
 
   get_process_manager(){
     this.MtsProcessGroupService.get_hr_person().subscribe(result => {
-      this.pcsm_list = result;
+      this.ps_list = result;
     });
   }
 
