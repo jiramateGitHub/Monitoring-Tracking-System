@@ -31,12 +31,12 @@
       </ion-item>
       <ion-item>
         <ion-label>ประเภทปี</ion-label>
-        <ion-select placeholder="เลือกประเภทปี" required>
+        <ion-select [(ngModel)]="pcs_year_type" placeholder="เลือกประเภทปี" required>
           <ion-select-option value="1">ปีปฏิทิน</ion-select-option>
           <ion-select-option value="2">ปีงบประมาณ</ion-select-option>
           <ion-select-option value="3">ปีการศึกษา</ion-select-option>
         </ion-select>
-        <ion-select placeholder="เลือกปี" required>
+        <ion-select [(ngModel)]="pcs_year" placeholder="เลือกปี" required>
           <ion-select-option value="2562">2562</ion-select-option>
           <ion-select-option value="2561">2561</ion-select-option>
           <ion-select-option value="2560">2560</ion-select-option>
@@ -44,7 +44,7 @@
       </ion-item>
       <ion-item>
         <ion-label>บังคับใช้งาน</ion-label>
-        <ion-toggle [(ngModel)]="pepperoni"></ion-toggle>
+        <ion-toggle [(ngModel)]="pcs_enforce"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label>ผู้ดูแล</ion-label>
@@ -59,5 +59,5 @@
         </ng-template>
       </ionic-selectable>
       </ion-item> 
+      
   </ion-content>
-  

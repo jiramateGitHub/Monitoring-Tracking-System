@@ -33,7 +33,49 @@ export class MtsProcessService {
   }
 
   process_active_update(){
-    return this.http.get("http://127.0.0.1:3000/process/"+this.pcs_pcsg_id).map(res => res.json());
+    let data = {
+      "pcs_active": "N",
+      "pcs_editor":"60160157"
+    }
+    return this.http.put("http://127.0.0.1:3000/process_active_update/"+this.pcs_id,data).map(res => res.json());
   }
+
+  process_insert(){
+    let data = {
+      "pcs_code": this.pcs_code,
+      "pcs_th": this.pcs_th,
+      "pcs_en": this.pcs_en,
+      "pcs_pcsg_id": this.pcs_pcsg_id,
+      "pcs_year_type": this.pcs_year_type,
+      "pcs_year": this.pcs_year,
+      "pcs_seq": "1",
+      "pcs_enforce": "1",
+      "pcs_skip": "1",
+      "pcs_free": "1",
+      "pcs_active": "Y",
+      "pcs_editor":"60160157"
+    }
+    return this.http.post("http://127.0.0.1:3000/process",data).map(res => res.json());
+  }
+
+  process_update(){
+    let data = {
+      "pcs_id": this.pcs_id,
+      "pcs_code": this.pcs_code,
+      "pcs_th": this.pcs_th,
+      "pcs_en": this.pcs_en,
+      "pcs_pcsg_id": this.pcs_pcsg_id,
+      "pcs_year_type": this.pcs_year_type,
+      "pcs_year": this.pcs_year,
+      "pcs_seq": "1",
+      "pcs_enforce": "1",
+      "pcs_skip": "1",
+      "pcs_free": "1",
+      "pcs_active": "Y",
+      "pcs_editor":"60160157"
+    }
+    return this.http.put("http://127.0.0.1:3000/process/"+this.pcs_id,data).map(res => res.json());
+  }
+
   
 }

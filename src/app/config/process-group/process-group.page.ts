@@ -21,14 +21,16 @@ export class ProcessGroupPage implements OnInit {
   private pcsg_th:string;
   private pcsg_en:string;
 
-  constructor(private alertController: AlertController,
-              private modalController: ModalController,
-              private toastController:ToastController,
-              private MtsProcessGroupService:MtsProcessGroupService,
-              private MtsProcessManagerService:MtsProcessManagerService,
-              private MtsProcessService:MtsProcessService,
-              public events: Events,
-              private router:Router) { }
+  constructor(
+    private alertController: AlertController,
+    private modalController: ModalController,
+    private toastController:ToastController,
+    private MtsProcessGroupService:MtsProcessGroupService,
+    private MtsProcessManagerService:MtsProcessManagerService,
+    private MtsProcessService:MtsProcessService,
+    public events: Events,
+    private router:Router
+  ) { }
 
   ngOnInit() {  
     this.pcsg_list = null;
@@ -38,7 +40,21 @@ export class ProcessGroupPage implements OnInit {
     });
   }
 
-  
+  doRefresh(event) {
+    this.get_process_group()
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
+
+  async presentToast(txt:string) {
+    const toast = await this.toastController.create({
+      message: txt,
+      duration: 2000
+    });
+    toast.present();
+  }
+
   async modal_insert_show() {
     this.MtsProcessGroupService.pcsg_id = '';
     this.MtsProcessGroupService.pcsg_code = '';
@@ -65,12 +81,6 @@ export class ProcessGroupPage implements OnInit {
     });
   }
 
-  doRefresh(event) {
-    this.get_process_group()
-    setTimeout(() => {
-      event.target.complete();
-    }, 1000);
-  }
 
   async presentAlert(pcsg_id:string,pcsg_code:string,pcsg_th:string,pcsg_en:string,pcsm_ps_id:string) {
     const alert = await this.alertController.create({
@@ -141,11 +151,4 @@ export class ProcessGroupPage implements OnInit {
     this.router.navigateByUrl("process")
   }
 
-  async presentToast(txt:string) {
-    const toast = await this.toastController.create({
-      message: txt,
-      duration: 2000
-    });
-    toast.present();
-  }
 }

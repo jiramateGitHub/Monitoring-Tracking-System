@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MtsProcessService } from './../../service/mts_process/mts-process.service';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-
+import { Events } from '@ionic/angular';
 @Component({
   selector: 'app-process',
   templateUrl: './process.page.html',
@@ -15,12 +15,17 @@ export class ProcessPage implements OnInit {
   constructor(private alertController: AlertController,
               private modalController: ModalController,
               private router:Router,
+              private events:Events,
               private toastController:ToastController,
               private MtsProcessService:MtsProcessService,
               private MtsProcedureService:MtsProcedureService) { }
 
   ngOnInit() {
+    this.pcs_list = null
     this.get_process()
+    this.events.subscribe('functionCall:get_process', eventData => { 
+      this.get_process();
+    });
   }
 
   get_process(){
@@ -30,7 +35,12 @@ export class ProcessPage implements OnInit {
   }
 
   async modal_insert_show() {
-    this.MtsProcessService.pcs_id = '';
+    this.MtsProcessService.pcs_id = "";
+    this.MtsProcessService.pcs_code = "";
+    this.MtsProcessService.pcs_th = "";
+    this.MtsProcessService.pcs_en = "";
+    this.MtsProcessService.pcs_year_type = "";
+    this.MtsProcessService.pcs_year = "";
     this.MtsProcessService.type_input = 'insert';
     const modal = await this.modalController.create({
       component: ProcessInputPage
@@ -50,7 +60,7 @@ export class ProcessPage implements OnInit {
     this.router.navigateByUrl("procedure")
   }
 
-  async presentAlert(pcs_id:string,pcs_code:string,pcs_th:string,pcs_en:string) {
+  async presentAlert(pcs_id:string,pcs_code:string,pcs_th:string,pcs_en:string,pcs_year_type:string,pcs_year:string,pcs_enforce:string) {
     const alert = await this.alertController.create({
       header: 'ข้อความแจ้งเตือน',
       message: pcs_th,
@@ -63,6 +73,9 @@ export class ProcessPage implements OnInit {
             this.MtsProcessService.pcs_code = pcs_code;
             this.MtsProcessService.pcs_th = pcs_th;
             this.MtsProcessService.pcs_en = pcs_en;
+            this.MtsProcessService.pcs_year_type = pcs_year_type;
+            this.MtsProcessService.pcs_year = pcs_year;
+            this.MtsProcessService.pcs_enforce = pcs_enforce;
             // this.MtsProcessManagerService.pcsm_ps_id = pcsm_ps_id;
             this.MtsProcessService.type_input = "update";
             this.modal_update_show()
