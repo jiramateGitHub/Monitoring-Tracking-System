@@ -1,3 +1,4 @@
+import { SessionService } from './../service/session/session.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -21,7 +22,7 @@ export class LoginPage implements OnInit {
             { username: '60160337', password: '60160337' ,name: 'ณัฐธร'},
             { username: '60160351', password: '60160351' ,name: 'วิภาวี'}]
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private SessionService:SessionService) { }
 
   ngOnInit() {
   }
@@ -40,6 +41,7 @@ export class LoginPage implements OnInit {
       alert("Username or Password incorrect");
     }else{
       this.router.navigateByUrl('home');
+      this.SessionService.UsPsCode = this.username;
     }
   }
 

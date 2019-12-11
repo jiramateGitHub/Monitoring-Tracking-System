@@ -1,3 +1,4 @@
+import { SessionService } from './../session/session.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'
 import 'rxjs/add/operator/map'
@@ -12,7 +13,7 @@ export class MtsProcessGroupService {
   public pcsg_th:string;
   public pcsg_en:string;
 
-  constructor(private http:Http) { }
+  constructor(private http:Http,private SessionService:SessionService) { }
 
   get_hr_person(){
     return this.http.get("http://127.0.0.1:3000/hr_person").map(res => res.json());
@@ -28,7 +29,7 @@ export class MtsProcessGroupService {
       "pcsg_th": pcsg_th,
       "pcsg_en": pcsg_en,
       "pcsg_active": "Y",
-      "pcsg_editor":"60160157"
+      "pcsg_editor": this.SessionService.UsPsCode
     }
     return this.http.post("http://127.0.0.1:3000/process_group",data).map(res => res.json());
   }
@@ -40,7 +41,7 @@ export class MtsProcessGroupService {
       "pcsg_th": pcsg_th,
       "pcsg_en": pcsg_en,
       "pcsg_active": "Y",
-      "pcsg_editor":"60160157"
+      "pcsg_editor":this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/process_group/"+pcsg_id,data).map(res => res.json());
   }
@@ -48,7 +49,7 @@ export class MtsProcessGroupService {
   process_group_active_update(pcsg_id:string){
     let data = {
       "pcsg_active": "N",
-      "pcsg_editor":"60160157"
+      "pcsg_editor": this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/process_group_active_update/"+pcsg_id,data).map(res => res.json());
   }

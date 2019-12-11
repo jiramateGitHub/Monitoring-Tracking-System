@@ -1,3 +1,4 @@
+import { MtsCaseProcedureService } from './../../service/mts_case_procedure/mts-case-procedure.service';
 import { MtsTaskManagerService } from './../../service/mts_task_manager/mts-task-manager.service';
 import { MtsCaseService } from './../../service/mts_case/mts-case.service';
 import { Component, OnInit } from '@angular/core';
@@ -29,7 +30,8 @@ export class CaseInputPage implements OnInit {
     private toastController:ToastController,
     public events: Events,
     private MtsCaseService:MtsCaseService,
-    private MtsTaskManagerService:MtsTaskManagerService
+    private MtsTaskManagerService:MtsTaskManagerService,
+    private MtsCaseProcedureService:MtsCaseProcedureService
   ) { }
 
   ngOnInit() {
@@ -53,7 +55,7 @@ export class CaseInputPage implements OnInit {
     let ps_id = this.ps_id.ps_id;
     this.MtsCaseService.case_insert().subscribe(result => {
       this.MtsTaskManagerService.task_manager_insert(result.insertId,ps_id).subscribe(result => {
-        this.presentToast("เพิ่มเรื่องเรียบร้อย")
+        this.case_procedure_insert()
       });
     });
     this.closeModal();
@@ -68,6 +70,12 @@ export class CaseInputPage implements OnInit {
       });
     });
     this.closeModal();
+  }
+
+  case_procedure_insert(){
+    this.MtsCaseProcedureService.case_procedure_insert().subscribe(result => {
+      this.presentToast("เพิ่มเรื่องเรียบร้อย")
+    });
   }
 
   async closeModal(){

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { SessionService } from './service/session/session.service';
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -39,9 +41,14 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router:Router,
+    private SessionService:SessionService
   ) {
     this.initializeApp();
+    if(this.SessionService.UsPsCode == undefined){
+      this.router.navigateByUrl("login")
+    }
   }
 
   initializeApp() {

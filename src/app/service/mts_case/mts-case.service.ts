@@ -1,3 +1,4 @@
+import { SessionService } from './../session/session.service';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -16,7 +17,7 @@ export class MtsCaseService {
   public case_last_update;
   public case_editor;
   public type_input;
-  constructor(private http:Http) { }
+  constructor(private http:Http,private SessionService:SessionService) { }
 
   get_hr_person(){
     return this.http.get("http://127.0.0.1:3000/hr_person").map(res => res.json());
@@ -32,7 +33,7 @@ export class MtsCaseService {
       "case_th": this.case_th,
       "case_en": this.case_en,
       "case_active": "Y",
-      "case_editor":"60160157"
+      "case_editor": this.SessionService.UsPsCode
     }
     return this.http.post("http://127.0.0.1:3000/process_group",data).map(res => res.json());
   }
@@ -44,7 +45,7 @@ export class MtsCaseService {
       "case_th": this.case_th,
       "case_en": this.case_en,
       "case_active": "Y",
-      "case_editor":"60160157"
+      "case_editor": this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/process_group/"+this.case_id,data).map(res => res.json());
   }
@@ -52,7 +53,7 @@ export class MtsCaseService {
   case_active_update(){
     let data = {
       "pcsg_active": "N",
-      "pcsg_editor":"60160157"
+      "pcsg_editor": this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/process_group_active_update/"+this.case_id,data).map(res => res.json());
   }

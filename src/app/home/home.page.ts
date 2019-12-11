@@ -1,3 +1,4 @@
+import { SessionService } from './../service/session/session.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,7 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public UsPsCode
+  constructor(private SessionService:SessionService) {}
 
-  constructor() {}
+  ngOnInit() {
+    this.UsPsCode = this.SessionService.UsPsCode
+  }
 
 }

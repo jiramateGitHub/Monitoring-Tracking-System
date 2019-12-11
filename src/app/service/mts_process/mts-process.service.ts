@@ -1,3 +1,4 @@
+import { SessionService } from './../session/session.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'
 import 'rxjs/add/operator/map'
@@ -22,7 +23,7 @@ export class MtsProcessService {
   public pcs_editor	;
   public type_input	;
   
-  constructor(private http:Http) { }
+  constructor(private http:Http,private SessionService:SessionService) { }
 
   get_hr_person(){
     return this.http.get("http://127.0.0.1:3000/hr_person").map(res => res.json());
@@ -35,7 +36,7 @@ export class MtsProcessService {
   process_active_update(){
     let data = {
       "pcs_active": "N",
-      "pcs_editor":"60160157"
+      "pcs_editor": this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/process_active_update/"+this.pcs_id,data).map(res => res.json());
   }
@@ -53,7 +54,7 @@ export class MtsProcessService {
       "pcs_skip": "1",
       "pcs_free": "1",
       "pcs_active": "Y",
-      "pcs_editor":"60160157"
+      "pcs_editor": this.SessionService.UsPsCode
     }
     return this.http.post("http://127.0.0.1:3000/process",data).map(res => res.json());
   }
@@ -72,7 +73,7 @@ export class MtsProcessService {
       "pcs_skip": "1",
       "pcs_free": "1",
       "pcs_active": "Y",
-      "pcs_editor":"60160157"
+      "pcs_editor": this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/process/"+this.pcs_id,data).map(res => res.json());
   }

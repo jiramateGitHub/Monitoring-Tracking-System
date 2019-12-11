@@ -1,3 +1,4 @@
+import { SessionService } from './../session/session.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 @Injectable({
@@ -10,14 +11,14 @@ export class MtsTaskManagerService {
   public tmgr_active;
   public tmgr_last_update;
   public tmgr_editor;
-  constructor(private http:Http) { }
+  constructor(private http:Http,private SessionService:SessionService) { }
 
   task_manager_insert(tmgr_cpcd_id:string,tmgr_ps_id:string){
     let data = {
       "tmgr_cpcd_id": tmgr_cpcd_id,
       "tmgr_ps_id": tmgr_ps_id,
       "tmgr_active": "Y",
-      "tmgr_editor":"60160157"
+      "tmgr_editor": this.SessionService.UsPsCode
     }
     return this.http.post("http://127.0.0.1:3000/task_manager",data).map(res => res.json());
   }
@@ -27,7 +28,7 @@ export class MtsTaskManagerService {
       "tmgr_cpcd_id": tmgr_cpcd_id,
       "tmgr_ps_id": tmgr_ps_id,
       "tmgr_active": "Y",
-      "tmgr_editor":"60160157"
+      "tmgr_editor": this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/task_manager/"+tmgr_cpcd_id,data).map(res => res.json());
   }

@@ -1,3 +1,4 @@
+import { CasePage } from './config/case/case.page';
 import { CaseInputPage } from './config/case-input/case-input.page';
 import { StateInputPage } from './config/state-input/state-input.page';
 import { ProcedureInputPage } from './config/procedure-input/procedure-input.page';
