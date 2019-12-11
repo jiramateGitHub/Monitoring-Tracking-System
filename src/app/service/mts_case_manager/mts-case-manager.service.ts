@@ -23,6 +23,7 @@ export class MtsCaseManagerService {
       "cmgr_active": "Y",
       "cmgr_editor": this.SessionService.UsPsCode
     }
+    console.log(data)
     return this.http.post("http://127.0.0.1:3000/case_manager",data).map(res => res.json());
   }
   

@@ -93,11 +93,14 @@ export class ProcessPage implements OnInit {
   }
 
   async page_show(pcs_id:string,pcs_th:string){
+
     this.MtsProcedureService.pcd_pcs_id = pcs_id;
     this.MtsCaseService.case_pcs_id = pcs_id;
+
     this.MtsProcessService.pcs_code = this.info_pcs_code
     this.MtsProcessService.pcs_th = this.info_pcs_th
     this.MtsProcessService.pcs_en = this.info_pcs_en
+    
     const alert = await this.alertController.create({
       header: 'ข้อความแจ้งเตือน',
       message: pcs_th,

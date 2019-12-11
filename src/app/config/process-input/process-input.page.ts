@@ -20,7 +20,7 @@ export class ProcessInputPage implements OnInit {
   private pcs_seq:string;
   private pcs_th:string;
   private pcs_en:string;
-  private pcs_enforce:string;
+  private pcs_enforce;
   private pcs_skip:string;
   private pcs_free:string;
   private pcs_active:string;
@@ -43,6 +43,7 @@ export class ProcessInputPage implements OnInit {
       this.pcs_code = this.MtsProcessService.pcs_code;
       this.pcs_th = this.MtsProcessService.pcs_th;
       this.pcs_en = this.MtsProcessService.pcs_en;
+      this.pcs_enforce = true;
       this.type_input = this.MtsProcessService.type_input;
     }
 
@@ -66,7 +67,6 @@ export class ProcessInputPage implements OnInit {
       this.MtsProcessService.pcs_en = this.pcs_en
       this.MtsProcessService.pcs_year_type = this.pcs_year_type
       this.MtsProcessService.pcs_year = this.pcs_year
-      this.MtsProcessService.pcs_enforce = this.pcs_enforce
 
       this.MtsProcessService.process_insert().subscribe(result => {
         this.MtsCaseManagerService.case_manager_insert(result.insertId,ps_id).subscribe(result => {
@@ -86,7 +86,6 @@ export class ProcessInputPage implements OnInit {
       this.MtsProcessService.pcs_en = this.pcs_en
       this.MtsProcessService.pcs_year_type = this.pcs_year_type
       this.MtsProcessService.pcs_year = this.pcs_year
-      this.MtsProcessService.pcs_enforce = this.pcs_enforce
 
       this.MtsProcessService.process_update().subscribe(result => {
         this.MtsCaseManagerService.case_manager_update(this.pcs_id,ps_id).subscribe(result => {

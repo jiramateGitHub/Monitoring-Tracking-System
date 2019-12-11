@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CasePage implements OnInit {
   private case_list:any[];
-  
+
   private info_pcs_code:string;
   private info_pcs_th:string;
   private info_pcs_en:string;
@@ -32,6 +32,9 @@ export class CasePage implements OnInit {
     this.info_pcs_code = this.MtsProcessService.pcs_code
     this.info_pcs_th = this.MtsProcessService.pcs_th
     this.info_pcs_en = this.MtsProcessService.pcs_en
+    this.events.subscribe('functionCall:get_case', eventData => { 
+      this.get_case();
+    });
   }
 
   doRefresh(event) {

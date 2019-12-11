@@ -29,25 +29,32 @@ export class MtsCaseService {
 
   case_insert(){
     let data = {
+      "case_pcs_id": this.case_pcs_id,
       "case_code": this.case_code,
       "case_th": this.case_th,
       "case_en": this.case_en,
+      "case_seq": '1',
+      "case_percentage": '0',
       "case_active": "Y",
       "case_editor": this.SessionService.UsPsCode
     }
-    return this.http.post("http://127.0.0.1:3000/process_group",data).map(res => res.json());
+    console.log(data)
+    return this.http.post("http://127.0.0.1:3000/case",data).map(res => res.json());
   }
 
   case_update(){
     let data = {
       "case_id": this.case_id,
+      "case_pcs_id": this.case_pcs_id,
       "case_code": this.case_code,
       "case_th": this.case_th,
       "case_en": this.case_en,
+      "case_seq": '1',
+      "case_percentage": '0',
       "case_active": "Y",
       "case_editor": this.SessionService.UsPsCode
     }
-    return this.http.put("http://127.0.0.1:3000/process_group/"+this.case_id,data).map(res => res.json());
+    return this.http.put("http://127.0.0.1:3000/case/"+this.case_id,data).map(res => res.json());
   }
 
   case_active_update(){
@@ -55,6 +62,6 @@ export class MtsCaseService {
       "pcsg_active": "N",
       "pcsg_editor": this.SessionService.UsPsCode
     }
-    return this.http.put("http://127.0.0.1:3000/process_group_active_update/"+this.case_id,data).map(res => res.json());
+    return this.http.put("http://127.0.0.1:3000/case_active_update/"+this.case_id,data).map(res => res.json());
   }
 }

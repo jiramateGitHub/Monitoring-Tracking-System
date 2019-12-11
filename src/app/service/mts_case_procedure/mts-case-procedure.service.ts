@@ -31,10 +31,11 @@ export class MtsCaseProcedureService {
       "cpcd_en": this.cpcd_en,
       "cpcd_abbr": this.cpcd_abbr,
       "cpcd_ratio": this.cpcd_ratio,
-      "cpcd_skip": this.cpcd_skip,
-      "case_active": "Y",
-      "case_editor": this.SessionService.UsPsCode
+      "cpcd_skip": '0',
+      "cpcd_active": "Y",
+      "cpcd_editor": this.SessionService.UsPsCode
     }
+    console.log(data)
     return this.http.post("http://127.0.0.1:3000/case_procedure",data).map(res => res.json());
   }
 
