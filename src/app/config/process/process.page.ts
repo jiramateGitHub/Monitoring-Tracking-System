@@ -13,6 +13,11 @@ import { Events } from '@ionic/angular';
 })
 export class ProcessPage implements OnInit {
   private pcs_list:any[];
+
+  private info_pcsg_code;
+  private info_pcsg_th;
+  private info_pcsg_en;
+
   constructor(
     private alertController: AlertController,
     private modalController: ModalController,
@@ -50,7 +55,9 @@ export class ProcessPage implements OnInit {
   get_process(){
     this.MtsProcessService.get_process().subscribe(result => {
       this.pcs_list = result;
-      console.log(this.pcs_list)
+      this.info_pcsg_code = result[0].pcsg_code;
+      this.info_pcsg_th = result[0].pcsg_th;
+      this.info_pcsg_en = result[0].pcsg_en;
     });
   }
 

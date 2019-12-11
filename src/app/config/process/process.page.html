@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
       <ion-back-button slot="start" defaultHref="/process-group"></ion-back-button>
-    <ion-title>จัดการกระบวนการ</ion-title>
+      <ion-title>จัดการกระบวนการ</ion-title>
+      <ion-buttons slot="end" class="btn_search" >
+        <ion-icon name="search" ></ion-icon>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -25,8 +28,13 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-searchbar placeholder="ค้นหา" *ngIf="pcs_list != ''"></ion-searchbar>
-
+    <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcsg_code}}</ion-card-subtitle>
+          <ion-card-title>{{info_pcsg_th}} ({{info_pcsg_en}})</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    
     <ion-list *ngFor="let pcs of pcs_list;let i = index">
         <ion-item >
           <ion-label (click)="procedure_page_show(pcs.pcs_id)">
