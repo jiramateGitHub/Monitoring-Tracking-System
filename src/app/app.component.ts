@@ -30,11 +30,6 @@ export class AppComponent {
       title: 'จัดการรูปแบบ',
       url: '/process-group',
       icon: 'flag'
-    },
-    {
-      title: 'จัดการเรื่อง',
-      url: '/case',
-      icon: 'git-branch'
     }
   ];
 

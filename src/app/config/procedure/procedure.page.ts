@@ -1,3 +1,4 @@
+import { MtsProcessService } from './../../service/mts_process/mts-process.service';
 import { MtsProcedureStateService } from './../../service/mts_procedure_state/mts-procedure-state.service';
 import { MtsStateService } from './../../service/mts_state/mts-state.service';
 import { ProcedureInputPage } from './../procedure-input/procedure-input.page';
@@ -14,11 +15,17 @@ import { HttpClient } from '@angular/common/http';
 export class ProcedurePage implements OnInit {
 
   private pcd_list:any[];
-  state:any[];
+  private info_pcs_code:string;
+  private info_pcs_th:string;
+  private info_pcs_en:string;
+
+  private state:any[];
+
   automaticClose = false;
 
   constructor(private alertController: AlertController,
               private modalController: ModalController,
+              private MtsProcessService:MtsProcessService,
               private MtsProcedureService:MtsProcedureService,
               private MtsStateService:MtsStateService,
               private MtsProcedureStateService:MtsProcedureStateService,
@@ -26,6 +33,9 @@ export class ProcedurePage implements OnInit {
 
   ngOnInit() {
     this.get_procedure()
+    this.info_pcs_code = this.MtsProcessService.pcs_code
+    this.info_pcs_th = this.MtsProcessService.pcs_th
+    this.info_pcs_en = this.MtsProcessService.pcs_en
     // this.state = [
     //   {
     //     "name" : "Specials",

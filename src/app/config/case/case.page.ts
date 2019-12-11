@@ -1,3 +1,4 @@
+import { MtsProcessService } from './../../service/mts_process/mts-process.service';
 import { CaseInputPage } from './../case-input/case-input.page';
 import { MtsCaseService } from './../../service/mts_case/mts-case.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,18 +12,26 @@ import { Router } from '@angular/router';
 })
 export class CasePage implements OnInit {
   private case_list:any[];
+  
+  private info_pcs_code:string;
+  private info_pcs_th:string;
+  private info_pcs_en:string;
   constructor(
     public events: Events,
     private router:Router,
     private toastController:ToastController,
     private modalController:ModalController,
     private alertController: AlertController,
-    private MtsCaseService:MtsCaseService
+    private MtsCaseService:MtsCaseService,
+    private MtsProcessService:MtsProcessService
   ) { }
 
   ngOnInit() {
     this.case_list = null
     this.get_case()
+    this.info_pcs_code = this.MtsProcessService.pcs_code
+    this.info_pcs_th = this.MtsProcessService.pcs_th
+    this.info_pcs_en = this.MtsProcessService.pcs_en
   }
 
   doRefresh(event) {
@@ -41,7 +50,6 @@ export class CasePage implements OnInit {
   }
 
   get_case(){
-    this.MtsCaseService.case_pcs_id = "1"
     this.MtsCaseService.get_case().subscribe(result => {
       this.case_list = result;
     });

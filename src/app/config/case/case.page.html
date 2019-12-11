@@ -1,8 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+        <ion-back-button slot="start" defaultHref="/process"></ion-back-button>
       <ion-title>จัดการเรื่อง</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -11,7 +9,12 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
+  <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcs_code}}</ion-card-subtitle>
+        <ion-card-title>{{info_pcs_th}} ({{info_pcs_en}})</ion-card-title>
+      </ion-card-header>
+    </ion-card>
   <ion-list *ngFor="let case of case_list;let i = index">
     <ion-item >
       <ion-label >

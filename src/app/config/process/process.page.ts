@@ -1,3 +1,4 @@
+import { MtsCaseService } from './../../service/mts_case/mts-case.service';
 import { HrPersonService } from './../../service/hr_person/hr-person.service';
 import { ProcessInputPage } from './../process-input/process-input.page';
 import { MtsProcedureService } from './../../service/mts_procedure/mts-procedure.service';
@@ -18,6 +19,10 @@ export class ProcessPage implements OnInit {
   private info_pcsg_th;
   private info_pcsg_en;
 
+  private info_pcs_code;
+  private info_pcs_th;
+  private info_pcs_en;
+
   constructor(
     private alertController: AlertController,
     private modalController: ModalController,
@@ -26,6 +31,7 @@ export class ProcessPage implements OnInit {
     private toastController:ToastController,
     private MtsProcessService:MtsProcessService,
     private MtsProcedureService:MtsProcedureService,
+    private MtsCaseService:MtsCaseService,
     private HrPersonService:HrPersonService
   ) { }
 
@@ -58,6 +64,10 @@ export class ProcessPage implements OnInit {
       this.info_pcsg_code = result[0].pcsg_code;
       this.info_pcsg_th = result[0].pcsg_th;
       this.info_pcsg_en = result[0].pcsg_en;
+
+      this.info_pcs_code = result[0].pcs_code;
+      this.info_pcs_th = result[0].pcs_th;
+      this.info_pcs_en = result[0].pcs_en;
     });
   }
 
@@ -82,9 +92,40 @@ export class ProcessPage implements OnInit {
     return await modal.present();
   }
 
-  procedure_page_show(pcs_id:string){
+  async page_show(pcs_id:string,pcs_th:string){
     this.MtsProcedureService.pcd_pcs_id = pcs_id;
-    this.router.navigateByUrl("procedure")
+    this.MtsCaseService.case_pcs_id = pcs_id;
+    this.MtsProcessService.pcs_code = this.info_pcs_code
+    this.MtsProcessService.pcs_th = this.info_pcs_th
+    this.MtsProcessService.pcs_en = this.info_pcs_en
+    const alert = await this.alertController.create({
+      header: 'ข้อความแจ้งเตือน',
+      message: pcs_th,
+      buttons: [
+        {
+          text: 'จัดการขั้นตอน',
+          cssClass: 'secondary',
+          handler: () => {
+            this.router.navigateByUrl("procedure")
+          }
+        },
+        {
+          text: 'จัดการเรื่อง',
+          cssClass: 'secondary',
+          handler: () => {
+            this.router.navigateByUrl("case")
+          }
+        },
+        {
+          text: 'ยกเลิก',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   async presentAlertRadio() {
@@ -185,7 +226,6 @@ export class ProcessPage implements OnInit {
               this.get_process();
               this.presentToast("ลบกลุ่มกระบวนเรียบร้อย")
            });
-           
           }
         }
       ]

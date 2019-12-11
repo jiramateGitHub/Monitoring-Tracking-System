@@ -3,7 +3,9 @@
       <ion-back-button slot="start" defaultHref="/process-group"></ion-back-button>
       <ion-title>จัดการกระบวนการ</ion-title>
       <ion-buttons slot="end" class="btn_search" >
-        <ion-icon name="search" ></ion-icon>
+        <ion-button >
+          <ion-icon name="search" ></ion-icon>
+        </ion-button>
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -29,20 +31,22 @@
     </ion-card>
 
     <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcsg_code}}</ion-card-subtitle>
-          <ion-card-title>{{info_pcsg_th}} ({{info_pcsg_en}})</ion-card-title>
-        </ion-card-header>
-      </ion-card>
+      <ion-card-header>
+        <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcsg_code}}</ion-card-subtitle>
+        <ion-card-title>{{info_pcsg_th}} ({{info_pcsg_en}})</ion-card-title>
+      </ion-card-header>
+    </ion-card> 
     
     <ion-list *ngFor="let pcs of pcs_list;let i = index">
         <ion-item >
-          <ion-label (click)="procedure_page_show(pcs.pcs_id)">
+          <ion-label (click)="page_show(pcs.pcs_id,pcs.pcs_th)">
               <h3>{{pcs.pcs_code}}</h3>
               <p>{{pcs.pcs_th}} ({{pcs.pcs_en}})</p>
             </ion-label>
             <ion-buttons slot="end" (click)="presentAlert(pcs.pcs_id,pcs.pcs_code,pcs.pcs_th,pcs.pcs_en,pcs.pcs_year_type,pcs.pcs_year,pcs.pcs_enforce,pcs.ps_fname,pcs.ps_lname)" >
-              <ion-icon name="more" size="small"></ion-icon>
+              <ion-button >
+                <ion-icon name="more" size="small"></ion-icon>
+              </ion-button> 
             </ion-buttons>
         </ion-item >
     </ion-list>
