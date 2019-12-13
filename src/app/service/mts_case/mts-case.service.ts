@@ -54,13 +54,14 @@ export class MtsCaseService {
       "case_active": "Y",
       "case_editor": this.SessionService.UsPsCode
     }
+    console.log(data)
     return this.http.put("http://127.0.0.1:3000/case/"+this.case_id,data).map(res => res.json());
   }
 
   case_active_update(){
     let data = {
-      "pcsg_active": "N",
-      "pcsg_editor": this.SessionService.UsPsCode
+      "case_active": "N",
+      "case_editor": this.SessionService.UsPsCode
     }
     return this.http.put("http://127.0.0.1:3000/case_active_update/"+this.case_id,data).map(res => res.json());
   }

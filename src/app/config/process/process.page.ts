@@ -1,3 +1,4 @@
+import { MtsCaseManagerService } from './../../service/mts_case_manager/mts-case-manager.service';
 import { MtsCaseService } from './../../service/mts_case/mts-case.service';
 import { HrPersonService } from './../../service/hr_person/hr-person.service';
 import { ProcessInputPage } from './../process-input/process-input.page';
@@ -32,6 +33,7 @@ export class ProcessPage implements OnInit {
     private MtsProcessService:MtsProcessService,
     private MtsProcedureService:MtsProcedureService,
     private MtsCaseService:MtsCaseService,
+    private MtsCaseManagerService:MtsCaseManagerService,
     private HrPersonService:HrPersonService
   ) { }
 
@@ -153,7 +155,7 @@ export class ProcessPage implements OnInit {
     await alert.present();
   }
 
-  async presentAlert(pcs_id:string,pcs_code:string,pcs_th:string,pcs_en:string,pcs_year_type:string,pcs_year:string,pcs_enforce:string,ps_fname:string,ps_lname:string) {
+  async presentAlert(pcs_id:string,pcs_code:string,pcs_th:string,pcs_en:string,pcs_year_type:string,pcs_year:string,pcs_enforce:string,ps_fname:string,ps_lname:string,ps_id:string) {
     const alert = await this.alertController.create({
       header: 'ข้อความแจ้งเตือน',
       message: pcs_th,
@@ -168,7 +170,7 @@ export class ProcessPage implements OnInit {
               this.MtsProcessService.pcs_en = pcs_en;
               this.MtsProcessService.pcs_year_type = pcs_year_type;
               this.MtsProcessService.pcs_year = pcs_year;
-              this.MtsProcessService.pcs_enforce = pcs_enforce;
+              this.MtsProcessService.pcs_enforce = ps_id;
               this.HrPersonService.ps_fname = ps_fname;
               this.HrPersonService.ps_lname = ps_lname;
 
@@ -186,7 +188,7 @@ export class ProcessPage implements OnInit {
             this.MtsProcessService.pcs_year_type = pcs_year_type;
             this.MtsProcessService.pcs_year = pcs_year;
             this.MtsProcessService.pcs_enforce = pcs_enforce;
-            // this.MtsProcessManagerService.pcsm_ps_id = pcsm_ps_id;
+            this.MtsCaseManagerService.cmgr_ps_id = ps_id;
             this.MtsProcessService.type_input = "update";
             this.modal_update_show()
           }

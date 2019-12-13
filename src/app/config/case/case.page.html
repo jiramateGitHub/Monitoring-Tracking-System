@@ -21,7 +21,7 @@
           <h3>{{case.case_code}}</h3>
           <p>{{case.case_th}} ({{case.case_en}})</p>
         </ion-label>
-        <ion-buttons slot="end" (click)="presentAlert(case.case_id,case.case_code,case.case_th,case.case_en)" >
+        <ion-buttons slot="end" (click)="presentAlert(case.case_id,case.case_code,case.case_th,case.case_en,case.tmgr_ps_id)" >
           <ion-icon name="more" size="small"></ion-icon>
         </ion-buttons>
     </ion-item >

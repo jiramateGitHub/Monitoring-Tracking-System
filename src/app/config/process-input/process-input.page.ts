@@ -9,7 +9,7 @@ import { ModalController, Events, ToastController } from '@ionic/angular';
   styleUrls: ['./process-input.page.scss'],
 })
 export class ProcessInputPage implements OnInit {
-  private cmgr_id;
+  private ps_id;
   private ps_list:any[];
 
   private pcs_id:string;
@@ -44,12 +44,18 @@ export class ProcessInputPage implements OnInit {
       this.pcs_th = this.MtsProcessService.pcs_th;
       this.pcs_en = this.MtsProcessService.pcs_en;
       this.pcs_enforce = true;
+      this.ps_id = this.MtsCaseManagerService.cmgr_ps_id;
       this.type_input = this.MtsProcessService.type_input;
     }
 
     get_process_manager(){
       this.MtsProcessGroupService.get_hr_person().subscribe(result => {
         this.ps_list = result;
+        for (var i=0; i<result.length ; i++) {
+          if(result[i].ps_id == this.ps_id){
+            this.ps_id = result[i]
+          }
+        }
       });
     }
   
@@ -59,8 +65,8 @@ export class ProcessInputPage implements OnInit {
     }
 
     process_insert(){
-      this.cmgr_id.toString();
-      let ps_id = this.cmgr_id.ps_id;
+      this.ps_id.toString();
+      let ps_id = this.ps_id.ps_id;
 
       this.MtsProcessService.pcs_code = this.pcs_code
       this.MtsProcessService.pcs_th = this.pcs_th
@@ -77,8 +83,8 @@ export class ProcessInputPage implements OnInit {
     }
 
     process_update(){
-      this.cmgr_id.toString();
-      let ps_id = this.cmgr_id.ps_id;
+      this.ps_id.toString();
+      let ps_id = this.ps_id.ps_id;
 
       this.MtsProcessService.pcs_id = this.pcs_id
       this.MtsProcessService.pcs_code = this.pcs_code

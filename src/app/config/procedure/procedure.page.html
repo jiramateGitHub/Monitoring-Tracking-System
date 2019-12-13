@@ -26,7 +26,6 @@
       <ion-list *ngFor="let child of item.children; let j = index" detail="false" no-padding>
         <ion-item tappable (click)="toggleItem(i,j)"  [ngClass]="{'child-active' : child.open,'child' : !child.open }">
             <ion-label>
-              {{child.st_code}}
               {{child.st_th}}
             </ion-label>
         </ion-item>

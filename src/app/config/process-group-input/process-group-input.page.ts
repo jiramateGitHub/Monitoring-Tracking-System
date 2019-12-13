@@ -39,6 +39,11 @@ export class ProcessGroupInputPage implements OnInit {
   get_process_manager(){
     this.MtsProcessGroupService.get_hr_person().subscribe(result => {
       this.ps_list = result;
+      for (var i=0; i<result.length ; i++) {
+        if(result[i].ps_id == this.ps_id){
+          this.ps_id = result[i]
+        }
+      }
     });
   }
 

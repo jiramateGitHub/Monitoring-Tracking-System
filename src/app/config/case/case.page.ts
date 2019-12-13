@@ -1,3 +1,4 @@
+import { MtsTaskManagerService } from './../../service/mts_task_manager/mts-task-manager.service';
 import { MtsProcessService } from './../../service/mts_process/mts-process.service';
 import { CaseInputPage } from './../case-input/case-input.page';
 import { MtsCaseService } from './../../service/mts_case/mts-case.service';
@@ -23,7 +24,8 @@ export class CasePage implements OnInit {
     private modalController:ModalController,
     private alertController: AlertController,
     private MtsCaseService:MtsCaseService,
-    private MtsProcessService:MtsProcessService
+    private MtsProcessService:MtsProcessService,
+    private MtsTaskManagerService:MtsTaskManagerService
   ) { }
 
   ngOnInit() {
@@ -59,6 +61,11 @@ export class CasePage implements OnInit {
   }
 
   async modal_insert_show() {
+    this.MtsCaseService.case_id = ""
+    this.MtsCaseService.case_code = "";
+    this.MtsCaseService.case_th = "";
+    this.MtsCaseService.case_en = "";
+    this.MtsTaskManagerService.tmgr_ps_id = "";
     this.MtsCaseService.type_input = 'insert';
     const modal = await this.modalController.create({
       component: CaseInputPage
@@ -73,7 +80,7 @@ export class CasePage implements OnInit {
     return await modal.present();
   }
 
-  async presentAlert(case_id:string,case_code:string,case_th:string,case_en:string) {
+  async presentAlert(case_id:string,case_code:string,case_th:string,case_en:string,tmgr_ps_id:string) {
     const alert = await this.alertController.create({
       header: 'ข้อความแจ้งเตือน',
       message: '',
@@ -86,6 +93,7 @@ export class CasePage implements OnInit {
             this.MtsCaseService.case_code = case_code;
             this.MtsCaseService.case_th = case_th;
             this.MtsCaseService.case_en = case_en;
+            this.MtsTaskManagerService.tmgr_ps_id = tmgr_ps_id;
             this.MtsCaseService.type_input = "update";
             this.modal_update_show()
           }
@@ -94,12 +102,40 @@ export class CasePage implements OnInit {
           text: 'ลบ',
           cssClass: 'secondary',
           handler: () => {
+            this.case_active_update_AlertConfirm(case_id)
           }
         },
         {
           text: 'ยกเลิก',
           cssClass: 'secondary',
           handler: () => {
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async case_active_update_AlertConfirm(case_id:string) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบ',
+      message: 'ลบเรื่องนี้?',
+      buttons: [
+        {
+          text: 'ไม่ลบ',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'ลบ',
+          handler: () => {
+            this.MtsCaseService.case_id = case_id
+            this.MtsCaseService.case_active_update().subscribe(result => {
+              this.get_case();
+              this.presentToast("ลบกลุ่มกระบวนเรียบร้อย")
+           });
           }
         }
       ]

@@ -49,6 +49,11 @@ export class CaseInputPage implements OnInit {
   get_task_manager(){
     this.MtsCaseService.get_hr_person().subscribe(result => {
       this.ps_list = result;
+      for (var i=0; i<result.length ; i++) {
+        if(result[i].ps_id == this.ps_id){
+          this.ps_id = result[i]
+        }
+      }
     });
   }
 
@@ -72,10 +77,11 @@ export class CaseInputPage implements OnInit {
     this.ps_id.toString();
     let ps_id = this.ps_id.ps_id;
 
+    this.MtsCaseService.case_id = this.case_id
     this.MtsCaseService.case_code = this.case_code
     this.MtsCaseService.case_th = this.case_th
     this.MtsCaseService.case_en = this.case_en
-
+    
     this.MtsCaseService.case_update().subscribe(result => {
       this.MtsTaskManagerService.task_manager_update(this.case_id,ps_id).subscribe(result => {
         this.presentToast("แก้ไขเรื่องเรียบร้อย")
