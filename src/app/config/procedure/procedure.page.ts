@@ -6,7 +6,7 @@ import { MtsProcedureService } from './../../service/mts_procedure/mts-procedure
 import { AlertController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Events } from '@ionic/angular';
 @Component({
   selector: 'app-procedure',
   templateUrl: './procedure.page.html',
@@ -29,7 +29,8 @@ export class ProcedurePage implements OnInit {
               private MtsProcedureService:MtsProcedureService,
               private MtsStateService:MtsStateService,
               private MtsProcedureStateService:MtsProcedureStateService,
-              private http:HttpClient) { }
+              private http:HttpClient,
+              private events:Events) { }
 
   ngOnInit() {
     this.get_procedure()
@@ -46,7 +47,9 @@ export class ProcedurePage implements OnInit {
     //     ] 
     //   }
     // ]
-
+    this.events.subscribe('functionCall:get_procedure', eventData => { 
+      this.get_procedure();
+    });
   }
 
   async modal_insert_show() {
