@@ -1,17 +1,20 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-item lines="none">
-          <ion-buttons slot="start" size="small" (click)="closeModal()">
-              <ion-icon name="close"></ion-icon>
-          </ion-buttons>
-          <ion-title>สร้างขั้นตอน</ion-title>
-          <ion-buttons slot="end" (click)="addCustomer()">
-              <ion-icon name="checkmark"></ion-icon>
-          </ion-buttons>
-        </ion-item>
-      
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+      <ion-item lines="none">
+        <ion-buttons slot="start" (click)="closeModal()">
+            <ion-icon name="close" ></ion-icon>
+        </ion-buttons>
+        <ion-title *ngIf="type_input == 'insert'">สร้างขั้นตอน</ion-title>
+        <ion-title *ngIf="type_input == 'update'">แก้ไขขั้นตอน</ion-title>
+        <ion-buttons slot="end"  (click)="procedure_insert()" *ngIf="type_input == 'insert'">
+            <ion-icon name="checkmark" ></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end"  (click)="procedure_update()" *ngIf="type_input == 'update'">
+            <ion-icon name="checkmark" ></ion-icon>
+        </ion-buttons>
+      </ion-item>
+  </ion-toolbar>
+</ion-header>
   
   <ion-content padding="true">
       <ion-item>

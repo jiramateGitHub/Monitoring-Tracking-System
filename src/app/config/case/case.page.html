@@ -9,12 +9,29 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcs_code}}</ion-card-subtitle>
-        <ion-card-title>{{info_pcs_th}} ({{info_pcs_en}})</ion-card-title>
-      </ion-card-header>
-    </ion-card>
+
+  <ion-item lines="none" *ngIf="case_list == '' ">
+    <ion-label>
+      เริ่มต้นใช้งาน
+    </ion-label>
+  </ion-item>
+  <ion-card *ngIf="case_list == '' ">
+    <img src="https://image.freepik.com/free-vector/error-404-concept-landing-page_52683-18633.jpg" />
+    <ion-card-header>
+      <ion-card-subtitle text-center><b>กรุณาสร้างเรื่องเพื่อใช้งาน</b></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="case_list != '' ">
+    <ion-card-header>
+      <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcs_code}}</ion-card-subtitle>
+      <ion-card-title>{{info_pcs_th}} ({{info_pcs_en}})</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
   <ion-list *ngFor="let case of case_list;let i = index">
     <ion-item >
       <ion-label >

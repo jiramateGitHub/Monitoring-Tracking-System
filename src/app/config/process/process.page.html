@@ -15,6 +15,13 @@
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
+    <ion-card *ngIf="pcs_list != '' ">
+      <ion-card-header>
+        <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcsg_code}}</ion-card-subtitle>
+        <ion-card-title>{{info_pcsg_th}} ({{info_pcsg_en}})</ion-card-title>
+      </ion-card-header>
+    </ion-card> 
+
     <ion-item lines="none" *ngIf="pcs_list == '' ">
       <ion-label>
           เริ่มต้นใช้งาน
@@ -27,15 +34,8 @@
       </ion-card-header>
       <ion-card-content>
         
-      </ion-card-content>
+      </ion-card-content> 
     </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle><ion-icon name="key"></ion-icon> {{info_pcsg_code}}</ion-card-subtitle>
-        <ion-card-title>{{info_pcsg_th}} ({{info_pcsg_en}})</ion-card-title>
-      </ion-card-header>
-    </ion-card> 
     
     <ion-list *ngFor="let pcs of pcs_list;let i = index">
         <ion-item >

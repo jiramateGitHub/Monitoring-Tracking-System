@@ -6,8 +6,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MtsProcedureService {
+  public type_input
   public pcd_id;
-  public pcd_pcs_id:string;
+  public pcd_pcs_id
   public pcd_seq;
   public pcd_th;
   public pcd_en;

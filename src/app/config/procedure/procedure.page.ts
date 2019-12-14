@@ -54,6 +54,11 @@ export class ProcedurePage implements OnInit {
 
   async modal_insert_show() {
     this.MtsProcedureService.pcd_id = '';
+    this.MtsProcedureService.pcd_th = '';
+    this.MtsProcedureService.pcd_en = '';
+    this.MtsProcedureService.pcd_ratio = '';
+    this.MtsProcedureService.pcd_abbr = '';
+    this.MtsProcedureService.type_input = 'insert';
     const modal = await this.modalController.create({
       component: ProcedureInputPage
     });
