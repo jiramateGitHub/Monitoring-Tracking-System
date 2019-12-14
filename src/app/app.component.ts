@@ -42,7 +42,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
     if(this.SessionService.UsPsCode == undefined){
-      // this.router.navigateByUrl("login")
+      this.router.navigateByUrl("login")
     }
   }
 
