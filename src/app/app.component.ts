@@ -42,8 +42,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
     if(this.SessionService.UsPsCode == undefined){
-      // this.router.navigateByUrl("login")
-      this.SessionService.UsPsCode = "60160157"
+      this.router.navigateByUrl("login")
     }
   }
 

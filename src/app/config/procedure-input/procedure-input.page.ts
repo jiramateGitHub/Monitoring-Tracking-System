@@ -31,6 +31,10 @@ export class ProcedureInputPage implements OnInit {
 
   ngOnInit() {
     this.type_input = this.MtsProcedureService.type_input;
+    this.pcd_abbr = this.MtsProcedureService.pcd_abbr;
+    this.pcd_th = this.MtsProcedureService.pcd_th;
+    this.pcd_en = this.MtsProcedureService.pcd_en;
+    this.pcd_ratio = this.MtsProcedureService.pcd_ratio;
   }
 
 
@@ -101,7 +105,6 @@ export class ProcedureInputPage implements OnInit {
   }
 
   procedure_update(){
-    this.MtsProcedureService.pcd_id = this.pcd_id
     this.MtsProcedureService.pcd_abbr = this.pcd_abbr
     this.MtsProcedureService.pcd_th = this.pcd_th
     this.MtsProcedureService.pcd_en = this.pcd_en

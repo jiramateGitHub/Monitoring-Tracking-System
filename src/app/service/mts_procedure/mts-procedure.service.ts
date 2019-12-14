@@ -41,8 +41,6 @@ export class MtsProcedureService {
   procedure_update(){
     let data = {
       "pcd_id": this.pcd_id,
-      "pcd_pcs_id": this.pcd_pcs_id,
-      "pcd_seq": this.pcd_seq,
       "pcd_th": this.pcd_th,
       "pcd_en": this.pcd_en,
       "pcd_abbr": this.pcd_abbr,

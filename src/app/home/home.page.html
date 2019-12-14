@@ -6,45 +6,74 @@
     <ion-title>
       หน้าหลัก
     </ion-title>
+    <ion-buttons slot="end" class="btn_logout" (click)="log_out()" >
+      <ion-button >
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+<div class="info">
+  <ion-thumbnail class="img_user">
+    <img  src="{{img}}" />
+    </ion-thumbnail>
+  <h1 text-center>{{fname}}</h1>
+  <h6 text-center>@ {{UsPsCode}}</h6>
+</div>
 <ion-content >
-      รหัส {{UsPsCode}}
-      <ion-grid class="mygrid" padding>
-          <ion-row>
-            <ion-col>
-            </ion-col>
-            <ion-col>
-            </ion-col>
-          </ion-row>
-          <ion-row class="myrow">
-              <ion-col class="mycols">
-                  <ion-card>
-                      <ion-card-header>
-                        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                        <ion-card-title>Card Title</ion-card-title>
-                      </ion-card-header>
+  <ion-list>
+    <ion-item (click)="page_process_group_show()">
+      <ion-label>จัดการรูปแบบ</ion-label>
+      <ion-buttons slot="end" (click)="page_process_group_show()" >
+        <ion-button >
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+    <ion-item (click)="page_task_show()">
+      <ion-label>ติดตามงาน</ion-label>
+      <ion-buttons slot="end" (click)="page_task_show()" >
+        <ion-button >
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <!-- <ion-grid class="mygrid" padding>
+      <ion-row>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row class="myrow">
+          <ion-col class="mycols">
+              <ion-card>
+                  <ion-card-header>
+                    <ion-card-subtitle>จัดการ</ion-card-subtitle>
+                    <ion-card-title>รูปแบบ</ion-card-title>
+                  </ion-card-header>
+                
+                  <ion-card-content>
                     
-                      <ion-card-content>
-                        
-                      </ion-card-content>
-                    </ion-card>
-              </ion-col>
-              <ion-col class="mycols1">
-                  <ion-card>
-                      <ion-card-header>
-                        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                        <ion-card-title>Card Title</ion-card-title>
-                      </ion-card-header>
+                  </ion-card-content>
+                </ion-card>
+          </ion-col>
+          <ion-col class="mycols1">
+              <ion-card>
+                  <ion-card-header>
+                    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+                    <ion-card-title>ติดตามงาน</ion-card-title>
+                  </ion-card-header>
+                
+                  <ion-card-content>
                     
-                      <ion-card-content>
-                        
-                      </ion-card-content>
-                    </ion-card>
-              </ion-col>
-            </ion-row>
-        </ion-grid>
+                  </ion-card-content>
+                </ion-card>
+          </ion-col>
+        </ion-row>
+    </ion-grid> -->
 </ion-content>
 
 <ion-footer>
