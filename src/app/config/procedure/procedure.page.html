@@ -47,14 +47,23 @@
       </ion-buttons>
     </ion-item>
     <div *ngIf="item.children && item.open">
-      <ion-list *ngFor="let child of item.children; let j = index" detail="false" no-padding>
+      <ul class="timeline" style="list-style: none;" >
+        <li  *ngFor="let child of item.children; let j = index">
+          <div class="timeline-thumb bg-color-blue timeline-icon">
+          </div>
+          <div class="timeline-item">
+            {{child.st_th}}
+          </div>
+        </li>
+      </ul>
+      <!-- <ion-list *ngFor="let child of item.children; let j = index" detail="false" no-padding>
         <ion-item tappable (click)="toggleItem(i,j)"  [ngClass]="{'child-active' : child.open,'child' : !child.open }">
             <ion-label>
               {{child.st_th}}
             </ion-label>
         </ion-item>
 
-      </ion-list>
+      </ion-list> -->
     </div>
   </ion-list>
 
