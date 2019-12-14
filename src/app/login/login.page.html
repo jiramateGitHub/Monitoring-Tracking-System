@@ -5,27 +5,21 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <br>
-    <img class="logo-img" src="assets/img/Logo.png">
-    <br>
-  </div>
-  
-
   <ion-card>
     <ion-card-header>
-      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-      <ion-card-title class="ion-text-center">เข้าสู่ระบบ</ion-card-title>
+      <ion-card-title class="ion-text-center">TEAM 4</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <ion-item>
-        <ion-label>ชื่อผู้ใช้ : </ion-label>
+        <ion-icon name="person"></ion-icon>
+        <ion-label> ชื่อผู้ใช้ : </ion-label>
         <ion-input type="text" [(ngModel)]="username"></ion-input>
       </ion-item>
       <br>
       <ion-item>
-        <ion-label>รหัสผ่าน : </ion-label>
+        <ion-icon name="key"></ion-icon>
+        <ion-label> รหัสผ่าน : </ion-label>
         <ion-input type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
       <br>

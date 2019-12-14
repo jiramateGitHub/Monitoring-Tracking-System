@@ -2,6 +2,23 @@
     display: block;
     width: 130px;
     height: 130px;
-   margin: auto;
+    margin: auto;
 }
 
+
+.logo{
+    padding-top: 10%;
+}
+
+ion-icon{
+    padding-right: 8px;
+}
+
+ion-content{
+    --background : #DFE0E4;
+}
+
+ion-card{
+    margin-top: 30%;
+    --background : #FFFFFF;
+}

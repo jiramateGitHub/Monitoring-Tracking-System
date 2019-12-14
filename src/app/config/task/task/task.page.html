@@ -7,6 +7,15 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
+    <ion-item *ngFor="let task of task_list;let i = index">
+        <ion-label>
+          <p>{{task.pcs_th}} ({{task.pcs_en}})</p>
+          <h3>{{task.case_code}}</h3>
+          <h2>{{task.case_th}}</h2>
+        </ion-label>
+        <ion-icon slot="end" name="options"></ion-icon>
+      </ion-item>
+    
 
 </ion-content>
 

@@ -27,6 +27,10 @@ export class MtsCaseService {
     return this.http.get("http://127.0.0.1:3000/case/"+this.case_pcs_id).map(res => res.json());
   }
 
+  get_case_task(){
+    return this.http.get("http://127.0.0.1:3000/case_task/"+this.SessionService.UsPsCode).map(res => res.json());
+  }
+
   case_insert(){
     let data = {
       "case_pcs_id": this.case_pcs_id,
