@@ -7,7 +7,24 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-item *ngFor="let task of task_list;let i = index">
+   
+  
+  <ion-item lines="none" *ngIf="task_list == null ">
+    <ion-label>
+        เริ่มต้นใช้งาน
+    </ion-label>
+  </ion-item>
+  <ion-card *ngIf="task_list == null ">
+    <img src="https://image.freepik.com/free-vector/error-404-concept-landing-page_52683-18633.jpg" />
+    <ion-card-header>
+      <ion-card-subtitle text-center><b>ไม่มีเรื่องในการติดตามของคุณ</b></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-item *ngFor="let task of task_list;let i = index">
         <ion-label>
           <p>{{task.pcs_th}} ({{task.pcs_en}})</p>
           <h3>{{task.case_code}}</h3>
