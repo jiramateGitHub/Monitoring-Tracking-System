@@ -57,6 +57,7 @@ export class CasePage implements OnInit {
   get_case(){
     this.MtsCaseService.get_case().subscribe(result => {
       this.case_list = result;
+      console.log(result)
     });
   }
 
