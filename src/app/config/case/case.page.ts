@@ -135,7 +135,7 @@ export class CasePage implements OnInit {
             this.MtsCaseService.case_id = case_id
             this.MtsCaseService.case_active_update().subscribe(result => {
               this.get_case();
-              this.presentToast("ลบกลุ่มเรื่องเรียบร้อย")
+              this.presentToast("ลบเรื่องเรียบร้อย")
            });
           }
         }

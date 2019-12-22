@@ -16,6 +16,13 @@ export class TaskPage implements OnInit {
     this.get_case_task()
   }
 
+  doRefresh(event) {
+    this.get_case_task()
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
+
   get_case_task(){
     this.MtsCaseService.get_case_task().subscribe(result => {
       this.task_list = result;
